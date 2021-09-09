@@ -1,0 +1,185 @@
+.cart{
+    padding-top: 100px;
+}
+.cart .head{
+    position: relative;
+    font-size: 28px;
+    padding-bottom: 10px;
+    margin-bottom: 40px;
+    width: fit-content;
+    overflow: hidden;
+}
+.cart .head::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    width: 70%;
+    background-color: hsl(140, 77%, 38%);
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    animation: heading 1.5s ease-in-out infinite;
+}
+@keyframes heading {
+    0%{
+        transform: translateX(-20%);
+    }
+    50%{
+        transform: translateX(0%);
+    }
+    100%{
+        transform: translateX(-20%);
+    }
+}
+.cart > .heading{
+    padding: 15px 0;
+    text-align: center;
+    border-bottom: 2px solid lightgreen;
+    font-size: 18px;
+}
+.cart .cart_item{
+    border-bottom: 2px solid lightgreen;
+    padding: 10px 0;
+    position: relative;
+}
+.cart .cart_item .img_cont{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.cart .cart_item .img_cont img{
+    height: 80px;
+}
+.cart .cart_item .img_cont .detail{
+    font-size: 16px;
+    color: gray;
+    text-align: center;
+}
+.cart .cart_item .price,
+.cart .cart_item .total{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cart .cart_item .quantity{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cart .cart_item .quantity .counter{
+    display: flex;
+}
+.cart .cart_item .quantity .counter input{
+    border: 1px solid lightgreen;
+    border-right: none;
+    outline: none;
+    padding: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    width: 50px;
+    text-align: center;
+}
+.cart .cart_item .quantity .counter .controls .up{
+    padding: 3px 15px;
+    font-size: 13px;
+    border: 1px solid lightgreen;
+    border-top-right-radius: 5px;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+}
+.cart .cart_item .quantity .counter .controls .down{
+    padding: 3px 15px;
+    font-size: 12px;
+    border: 1px solid lightgreen;
+    border-bottom-right-radius: 5px;
+    cursor: pointer;
+    border-top: none;
+    transition: 0.5s ease-in-out;
+}
+.cart .cart_item .quantity .counter .controls .up:hover,
+.cart .cart_item .quantity .counter .controls .down:hover{
+    background-color: lightgreen;
+}
+.cart .cart_item .cart_btn_cont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cart .cart_item .cart_btn_cont .cart_btn{
+    padding: 10px 30px;
+    margin-right: 40px;
+    border-radius: 50px;
+    border: 2px solid #cd6bda;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+}
+.cart .cart_item .cart_btn_cont .cart_btn:hover{
+    background-color: #cd6bda;
+    color: white;
+}
+.cart .cart_item .remove_item{
+    font-size: 48px;
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgb(255, 126, 126);
+    color: rgb(255, 86, 86);
+    padding-bottom: 3px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    top: 35%;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+}
+.cart .cart_item .remove_item:hover{
+    border: 2px solid rgb(255, 67, 67);
+    background-color: rgb(255, 67, 67);
+    color: white;
+}
+.cart .total_cont{
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px 0;
+    padding-right: 50px;
+    font-size: 20px;
+    border-bottom: 2px solid lightgreen;
+}
+.cart .total_cont .total{
+    margin-left: 80px;
+}
+.cart .checkout{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cart .checkout .checkout_btn{
+    background-color: hsl(140, 77%, 45%);
+    color: white;
+    border-radius: 50px;
+    margin-top: 50px;
+    padding: 10px 50px;
+    font-size: 20px;
+    cursor: pointer;
+    border: 2px solid hsl(140, 77%, 45%);
+    transition: 0.5s ease-in-out;
+}
+.cart .checkout .checkout_btn:hover{
+    transform: scale(1.05);
+    border: 2px solid hsl(140, 100%, 22%);
+}
+@keyframes arrow {
+    0%{
+        transform: translateX(0px);
+    }
+    50%{
+        transform: translateX(10px);
+    }
+    100%{
+        transform: translateX(0px);
+    }
+}
+

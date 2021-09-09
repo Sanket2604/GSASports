@@ -1,0 +1,10 @@
+.prod_page{
+    padding: 100px 5vw 50px 5vw;
+}
+.prod_page > .heading{
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid hsl(140, 77%, 38%);
+}

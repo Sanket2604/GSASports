@@ -1,0 +1,106 @@
+.anim_cont{
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    width: fit-content!important;
+    padding: 0!important;
+    margin: 0!important;
+    box-shadow: none!important;
+    border-radius: 0!important;
+    background-color: transparent!important;
+    line-height: normal!important;
+    color: black!important;
+}
+.itemCard_cont{
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+    margin-bottom: 30px;
+}
+.itemCard_cont .item_card {
+    background-color: hsl(0, 0%, 98%);
+    height: 100%;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    transform-origin: center;
+    box-shadow: hsla(140, 77%, 38%,0.2) 0px 4px 12px;
+}
+.itemCard_cont .item_card .img_sec{
+    height: 130px;
+    width: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #7ee8fa;
+    background-image: linear-gradient(315deg, #7ee8fa 0%, #80ff72 74%);
+
+    border-radius: 100%;
+}
+.itemCard_cont .item_card .img_sec .image{
+    height: 100px;
+    transition: 0.5s ease-in;
+}
+.itemCard_cont .item_card .title{
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 30px;
+    transition: 0.5s ease-in;
+}
+.itemCard_cont .item_card .desc{
+    margin-top: 10px;
+    font-size: 14px;
+    text-align: center;
+    transition: 0.5s ease-in;
+}
+.itemCard_cont .item_card .view_btn{
+    margin-top: 20px;
+    width: 90%;
+    text-align: center;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 40px;
+    border: 2px solid hsl(140, 77%, 38%);
+    color: hsl(140, 77%, 38%);
+    font-weight: 500;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+    transition: 0.5s ease-in;
+}
+.itemCard_cont .item_card .view_btn:hover{
+    background-color: hsl(140, 77%, 38%);
+    color: white;
+}
+.itemCard_cont .item_card .view_btn i{
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 5px;
+    animation: btn_arrow 2s ease-in-out infinite;
+}
+@keyframes btn_arrow {
+    0%{
+        transform: translateX(8px);
+    }
+    50%{
+        transform: translateX(0%);
+    }
+    100%{
+        transform: translateX(8px);
+    }
+}
+.itemCard_cont .item_card:hover{
+    transition: none;
+}
+.itemCard_cont .item_card:hover .image{
+    transform: translateZ(50px) rotateZ(-20deg);
+}
+.itemCard_cont .item_card:hover .title{
+    transform: translateZ(40px);
+}
+.itemCard_cont .item_card:hover .desc{
+    transform: translateZ(30px);
+}
+.itemCard_cont .item_card:hover .view_btn{
+    transform: translateZ(20px);
+}

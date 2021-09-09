@@ -1,0 +1,97 @@
+.gallery_grid{
+    padding: 65px 0 0 0!important;
+}
+.gallery_grid .row{
+    margin: 0;
+}
+.gallery_grid .row>*{
+    padding: 0!important;
+}
+.gallery_grid .col-12{
+    min-height: 400px;
+}
+.gallery_grid .col-6{
+    overflow: hidden;
+    height: 250px;
+    position: relative;
+}
+.gallery_grid video{
+    height: 250px;
+}
+.gallery_grid .pic{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.gallery_grid  .pic1{
+    background-image: url(../assets/gallery/pic1.jpg);
+}
+.gallery_grid  .pic2{
+    background-image: url(../assets/gallery/pic2.jpg);
+}
+.gallery_grid  .pic3{
+    background-image: url(../assets/gallery/pic3.jpg);
+}
+.gallery_grid  .pic4{
+    background-image: url(../assets/gallery/pic4.jpg);
+}
+.gallery_grid  .pic5{
+    background-image: url(../assets/gallery/pic5.jpg);
+}
+.gallery_grid  .pic6{
+    background-image: url(../assets/gallery/pic6.jpg);
+}
+.gallery_grid  .pic7{
+    background-image: url(../assets/gallery/pic7.jpg);
+}
+.gallery_grid  .pic8{
+    background-image: url(../assets/gallery/pic8.jpg);
+}
+.gallery_grid  .pic9{
+    background-image: url(../assets/gallery/pic9.jpg);
+}
+.gallery_grid  .pic10{
+    background-image: url(../assets/gallery/pic10.jpg);
+}
+.gallery_grid  .pic11{
+    background-image: url(../assets/gallery/pic11.jpg);
+}
+.gallery_grid  .pic12{
+    background-image: url(../assets/gallery/pic12.jpg);
+}
+.gallery_grid  .pic13{
+    background-image: url(../assets/gallery/pic13.jpg);
+}
+.gallery_grid  .pic14{
+    background-image: url(../assets/gallery/pic14.jpg);
+}
+.gallery_grid  .pic15{
+    background-image: url(../assets/gallery/pic15.jpg);
+}
+.gallery_grid  .pic16{
+    background-image: url(../assets/gallery/pic16.jpg);
+}
+.gallery_grid  .pic17{
+    background-image: url(../assets/gallery/pic17.jpg);
+}
+.gallery_grid  .pic18{
+    background-image: url(../assets/gallery/pic18.jpg);
+}
+.gallery_grid  .pic19{
+    background-image: url(../assets/gallery/pic19.jpg);
+}
+.gallery_grid  .pic20{
+    background-image: url(../assets/gallery/pic20.jpg);
+}
+.gallery_grid  .pic21{
+    background-image: url(../assets/gallery/pic21.jpg);
+}
+.gallery_grid  .pic22{
+    background-image: url(../assets/gallery/pic22.jpg);
+}
+.gallery_grid  .pic23{
+    background-image: url(../assets/gallery/pic23.jpg);
+}
+.gallery_grid  .pic24{
+    background-image: url(../assets/gallery/pic24.jpg);
+}

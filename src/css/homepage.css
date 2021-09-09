@@ -1,0 +1,184 @@
+.homepage{
+    padding-top: 65px;
+}
+.homepage .video_sec{
+    position: relative;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+}
+.homepage .video_sec::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 65%;
+    height: 15px;
+    background-color: hsl(140, 77%, 38%, 0.9);
+    color: white;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 1% 100%);
+}
+.homepage .video_sec::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 65%;
+    height: 15px;
+    background-color: hsl(140, 77%, 38%, 0.9);
+    color: white;
+    clip-path: polygon(0 0, 99% 0, 100% 100%, 0 100%);
+}
+.homepage .top_pick_cont{
+    padding: 80px 5vw 50px!important;
+}
+.homepage .section1 .heading{
+    position: relative;
+    font-size: 28px;
+    margin-left: 5vw;
+    padding-bottom: 10px;
+    margin-bottom: 40px;
+    width: fit-content;
+    overflow: hidden;
+}
+.homepage .section1 .heading::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    width: 70%;
+    background-color: hsl(140, 77%, 38%);
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    animation: heading 1.5s ease-in-out infinite;
+}
+@keyframes heading {
+    0%{
+        transform: translateX(-20%);
+    }
+    50%{
+        transform: translateX(0%);
+    }
+    100%{
+        transform: translateX(-20%);
+    }
+}
+.homepage .section1 .row {
+    margin: 0!important;
+}
+.homepage .section1 .row>*{
+    padding: 0!important;
+}
+.homepage .section1 .row .image_cont{
+    height: 500px;  
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.homepage .section1 .row1 .image_cont{
+    clip-path: polygon(0 0, 90% 0, 100% 100%, 0 100%);
+    background-image: url(../assets/homepage/swim.jpg);
+}
+.homepage .section1 .row2 .image_cont{
+    background-image: url(../assets/homepage/cricket.jpg);
+}
+.homepage .section1 .row3 .image_cont{
+    clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
+    background-image: url(../assets/homepage/basketball.jpg);
+}
+.homepage .section1 .row .content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.homepage .section1 .row .content img{
+    margin-bottom: 20px;
+}
+.homepage .section1 .row .content .title{
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+.homepage .section1 .row .content .shop_btn{
+    padding: 10px 30px;
+    font-size: 16px;
+    border-radius: 40px;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+}
+.homepage .section1 .row .content .shop_btn:hover{
+    color: white;
+    transform: scale(1.05);
+    box-shadow: rgba(50, 50, 93, 0.3) 0px 30px 60px -12px, rgba(0, 0, 0, 0.45) 0px 18px 36px -18px;
+}
+.homepage .section1 .row1 .content .shop_btn{
+    border: 2px solid hsl(199, 100%, 40%);
+    color: hsl(199, 100%, 40%);
+}
+.homepage .section1 .row1 .content .shop_btn:hover{
+    background-color: hsl(199, 100%, 40%);
+}
+.homepage .section1 .row2 .content .shop_btn{
+    border: 2px solid hsl(355, 100%, 35%);
+    color: hsl(355, 100%, 35%);
+}
+.homepage .section1 .row2 .content .shop_btn:hover{
+    background-color: hsl(355, 100%, 35%);
+}
+.homepage .section1 .row3 .content .shop_btn{
+    border: 2px solid rgb(238,104,45);
+    color: rgb(238,104,45);
+}
+.homepage .section1 .row3 .content .shop_btn:hover{
+    background-color: rgb(238,104,45);
+}
+.homepage .section1 .row .content .shop_btn i{
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 5px;
+    animation: btn_arrow 2s ease-in-out infinite;
+}
+@keyframes btn_arrow {
+    0%{
+        transform: translateX(8px);
+    }
+    50%{
+        transform: translateX(0%);
+    }
+    100%{
+        transform: translateX(8px);
+    }
+}
+.homepage .section1 .row .viewmore_cont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+.homepage .section1 .row .viewmore_cont .viewmore_btn{
+    margin: 50px;
+    padding: 10px 40px;
+    font-size: 18px;
+    border-radius: 40px;
+    border: 2px solid hsl(140, 77%, 38%);
+    color: hsl(140, 77%, 38%);
+    font-weight: 500;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+}
+.homepage .section1 .row .viewmore_cont .viewmore_btn:hover{
+    background-color: hsl(140, 77%, 38%);
+    color: white;
+    transform: scale(1.05);
+    box-shadow: rgba(50, 50, 93, 0.3) 0px 30px 60px -12px, rgba(0, 0, 0, 0.45) 0px 18px 36px -18px;
+}
+.homepage .section1 .row .viewmore_cont .viewmore_btn i{
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 5px;
+    animation: btn_arrow 2s ease-in-out infinite;
+}
