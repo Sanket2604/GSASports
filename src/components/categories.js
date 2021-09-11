@@ -22,8 +22,23 @@ export default function Categories() {
         window.scrollTo(0, 0)
     }, []);
 
+    function breadCrumbs(){
+        document.querySelector('.breadcrumbs').classList.toggle('show')
+    }
+
     return (
         <div className="cat_page">
+            <div className="filter" onClick={breadCrumbs}><i class="fa fa-filter"></i></div>
+            <div className="breadcrumbs">
+                <a href="" className="opts">Batminton</a>
+                <a href="" className="opts">Basketball</a>
+                <a href="" className="opts">Cricket</a>
+                <a href="" className="opts">Hockey</a>
+                <a href="" className="opts">Swimming</a>
+                <a href="" className="opts">Table Tennis</a>
+                <a href="" className="opts">Tennis</a>
+                <a href="" className="opts">Volleyball</a>
+            </div>
             <div className="heading">Shop</div>
             <div className="category container-fluid">
                 <div className="heading">Catergory 1</div>

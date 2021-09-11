@@ -48,7 +48,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
 }
 .prod_det .content .size .heading{
     font-size: 18px;
@@ -70,12 +70,52 @@
 .prod_det .content .size .s:hover{
     transform: scale(1.1);
 }
-.prod_det .content .size .s1{
+.prod_det .content .size .s.active{
     font-weight: 500;
     background-color: hsl(140, 76%, 50%);
     border: 2px solid hsl(140, 100%, 34%);
     color: white;
     transform: scale(1.1);
+}
+.prod_det .content .quantity{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+}
+.prod_det .content .quantity .counter{
+    display: flex;
+}
+.prod_det .content .quantity .counter input{
+    border: 1px solid lightgreen;
+    border-right: none;
+    outline: none;
+    padding: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    width: 50px;
+    text-align: center;
+}
+.prod_det .content .quantity .counter .controls .up{
+    padding: 3px 15px;
+    font-size: 13px;
+    border: 1px solid lightgreen;
+    border-top-right-radius: 5px;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+}
+.prod_det .content .quantity .counter .controls .down{
+    padding: 3px 15px;
+    font-size: 12px;
+    border: 1px solid lightgreen;
+    border-bottom-right-radius: 5px;
+    cursor: pointer;
+    border-top: none;
+    transition: 0.5s ease-in-out;
+}
+.prod_det .content .quantity .counter .controls .up:hover,
+.prod_det .content .quantity .counter .controls .down:hover{
+    background-color: lightgreen;
 }
 .prod_det .content .cart_cont{
     display: flex;

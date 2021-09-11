@@ -1,8 +1,14 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import '../css/login.css'
 
 export default function Login() {
+
+    useEffect(() => {
+        document.title = "GSA Sports | Login"
+        window.scrollTo(0, 0)
+    }, []);
+
     return (
         <div className="login_cont">
             <div className="login">
@@ -22,7 +28,7 @@ export default function Login() {
                         </label>                           
                     </div>
                 </div>
-                <div className="submit">Login</div>
+                <Link to="/account"><div className="submit">Login</div></Link>
                 <Link to="/signup"><div className="msg">Don't have an account? Create A New Account</div></Link>
             </div>
         </div>

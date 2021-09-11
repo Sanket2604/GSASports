@@ -11,6 +11,10 @@ import Gallery from './gallery'
 import Cart from './cart'
 import Login from './login'
 import Signup from './signup'
+import Account from './account'
+import OrderList from './order_list'
+import OrderDetail from './order_detail'
+import Checkout from './checkout'
 import { Switch, Route, Redirect } from 'react-router'
 
 export default function Main() {
@@ -26,8 +30,12 @@ export default function Main() {
                 <Route path="/product" component={product}/>
                 <Route path="/product_detail" component={Prod_D}/>
                 <Route path="/cart" component={Cart}/>
+                <Route path="/checkout" component={Checkout}/>
                 <Route path="/login" component={Login}/>
                 <Route path="/signup" component={Signup}/>
+                <Route path="/account" component={Account}/>
+                <Route path="/your_orders" component={OrderList}/>
+                <Route path="/order_detail" component={OrderDetail}/>
                 <Redirect to="/home" />
             </Switch>
             <Footer /> 

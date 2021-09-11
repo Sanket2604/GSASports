@@ -5,7 +5,7 @@ import ItemCard from './itemCard'
 export default function Product() {
 
     useEffect(() => {
-        document.title = "GSA Sports | Product Detail"
+        document.title = "GSA Sports | Category"
         window.scrollTo(0, 0)
     }, []);
 

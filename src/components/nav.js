@@ -34,7 +34,14 @@ export default function Nav() {
                 </div>
                 <div className="nav_sec">
                     <Link to="/cart"><div className="opt opt1"></div></Link>
-                    <Link to="/login"><div className="opt opt2"></div></Link>
+                    <Link to="login">
+                        <div className="opt opt2">
+                            <div className="dropdown">
+                                <Link to="/login"><div className="option">Signin</div></Link>
+                                <Link to="/signup"><div className="option">Signup</div></Link>
+                            </div>
+                        </div>
+                    </Link>
                 </div>
                 <div className="menu-btn" style={{transition: "all .5s ease-in-out"}} onClick={toggleSideBar}>
                     <div className="menu-btn_burger" style={{transition: "all .5s ease-in-out"}}></div>

@@ -142,6 +142,18 @@
     transform: translateY(-10px);
     box-shadow: 0 5px 10px rgba(78, 78, 78, 0.4);
 }
+.signup_cont .signup .msg{
+    margin-top: 30px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+    text-decoration: underline;
+    color: black;
+}
+.signup_cont .signup .msg:hover{
+    color: hsl(140, 100%, 50%);
+}
 @media only screen and (max-width:550px){
 
     .form{

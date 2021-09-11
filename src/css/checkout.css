@@ -1,0 +1,107 @@
+.checkout{
+    padding-top: 120px;
+}
+.checkout .save_add{
+    padding-right: 20px;
+}
+.checkout .save_add .box{
+    margin: 20px 0;
+    padding: 20px 30px;
+    padding-bottom: 40px;
+    background-color: hsla(140, 77%, 58%, 0.2);
+    position: relative;
+    border-radius: 10px;
+    transition: 0.5s ease-in-out;
+    border: 2px solid hsl(140, 77%, 28%);
+}
+.checkout .save_add .box:hover{
+    transform: scale(1.025);
+    color: white;
+    background-color: hsl(140, 77%, 48%);
+    box-shadow: hsla(140, 77%, 38%, 0.3) 0px 13px 27px -5px, hsla(140, 77%, 48%, 0.9) 0px 8px 16px -8px;
+}
+.checkout .save_add .box h5 span{
+    font-size: 14px;
+}
+.checkout .save_add .box p{
+    cursor: pointer;
+    font-size: 15px;
+}
+.checkout .save_add .box .delete,
+.checkout .save_add .box .edit{
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    opacity: 0.7;
+    background-color: hsl(140, 100%, 24%);
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    transition: 0.5s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.checkout .save_add .box .edit{
+    right: 56px;
+}
+.checkout .save_add .box .delete:hover,
+.checkout .save_add .box .edit:hover{
+    opacity: 1;
+}
+.checkout .save_add .box .delete img,
+.checkout .save_add .box .edit img{
+    object-fit: contain;
+    height: 20px;
+    width: 20px;
+}
+.checkout .save_add .new_add{
+    margin-top: 20px;
+}
+.checkout .new_add .form-group{
+    margin-top: 20px;
+}
+.checkout .order_summary{
+    padding: 20px 30px;
+    background-color: hsla(140, 77%, 58%, 0.2);
+    height: fit-content;
+}
+.checkout .order_summary .row{
+    padding: 15px 0;
+    text-align: center;
+}
+.checkout .order_summary .header{
+    border-top: 2px solid hsl(140, 77%, 28%);
+    border-bottom: 2px solid hsl(140, 77%, 28%);
+    font-weight: 500;
+    font-size: 17px;
+    margin-top: 30px;
+}
+.checkout .order_summary .subtotal,
+.checkout .order_summary .shipping,
+.checkout .order_summary .total{
+    font-weight: 500;
+}
+.checkout .order_summary .total{
+    border-top: 2px solid hsl(140, 77%, 28%);
+}
+.checkout .order_summary .pay_cont{
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+.checkout .order_summary .pay_cont .pay_btn{
+    border: 2px solid hsl(140, 77%, 28%);
+    color: hsl(140, 77%, 28%);
+    font-weight: 500;
+    padding: 15px 0;
+    border-radius: 50px;
+    font-size: 18px;
+    transition: 0.5s ease-in-out;
+}
+.checkout .order_summary .pay_cont .pay_btn:hover{
+    color: white;
+    border: 2px solid hsl(140, 77%, 48%);
+    background-color: hsl(140, 77%, 48%);
+}

@@ -1,0 +1,26 @@
+.cart .row3{
+    margin-top: 50px;
+}
+.cart .row3 .heading{
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.cart .row3 .add{
+    border: 2px solid hsl(140, 77%, 38%);
+    padding: 30px;
+    border-radius: 5px;
+    color: black;
+    transition: 0.5s ease-in-out;
+}
+.cart .row3 .add:hover{
+    background-color: hsl(140, 77%, 38%);
+    color: white;
+    box-shadow: hsla(140, 77%, 38%, 0.69) 0px 5px 15px;
+    transform: scale(1.01);
+}
+.cart .row3 .add .name{
+    font-weight: 500;
+    margin-bottom: 10px;
+}

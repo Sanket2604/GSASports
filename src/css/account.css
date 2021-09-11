@@ -1,0 +1,88 @@
+.account_cont{
+    padding-top: 100px;
+}
+.account_cont > .heading{
+    font-size: 28px;
+    position: relative;
+    width: fit-content;
+    overflow: hidden;
+    padding-bottom: 10px;
+}
+.account_cont >.heading:after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    width: 70%;
+    background-color: hsl(140, 77%, 38%);
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    animation: heading 1.5s ease-in-out infinite;
+}
+.account_cont .row .img_cont{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+.account_cont .row1{
+    padding-bottom: 50px;
+    border-bottom: 2px solid hsl(140, 71%, 41%);
+}
+.account_cont .row .img_cont img{
+    height: 200px;
+    width: 200px;
+    border-radius: 5px;
+    border: 3px solid hsl(140, 71%, 41%);
+}
+.account_cont .row2 .column1{
+    padding: 50px 20px;
+    border-right: 2px solid hsl(140, 71%, 41%);
+}
+.account_cont .row2 .column2{
+    padding: 50px 20px;
+}
+.account_cont .row2 .column > .heading{
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+.account_cont .row2 .column .sec{
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+.account_cont .row2 .column .sec:last-child{
+    margin-bottom: 0;
+}
+.account_cont .row2 .column .sec span{
+    font-weight: 500;
+    font-size: 18px;
+    margin-right: 10px;
+}
+.account_cont .row2 .column .sec i{
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 20px;
+    color: hsl(140, 77%, 38%);
+}
+.account_cont .row2 .column2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-height: 500px;
+}
+.account_cont .row2 .column2 .order_btn{
+    background-color: hsl(140, 77%, 38%);
+    border: 2px solid hsl(140, 77%, 28%);
+    color: white;
+    font-size: 18px;
+    padding: 8px 38px;
+    border-radius: 40px;
+    margin-top: 30px;
+    transition: 0.5s ease-in-out;
+}
+.account_cont .row2 .column2 .order_btn:hover{
+    background-color: white;
+    color: hsl(140, 77%, 38%);
+}

@@ -69,6 +69,9 @@
 .homepage .section1 .row {
     margin: 0!important;
 }
+.homepage .section1 .row:nth-child(2n) {
+    border-bottom: 2px solid hsl(140, 77%, 38%);
+}
 .homepage .section1 .row>*{
     padding: 0!important;
 }
@@ -79,15 +82,37 @@
     background-size: cover;
 }
 .homepage .section1 .row1 .image_cont{
-    clip-path: polygon(0 0, 90% 0, 100% 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
     background-image: url(../assets/homepage/swim.jpg);
 }
 .homepage .section1 .row2 .image_cont{
+    clip-path: polygon(0 0, 90% 0, 100% 100%, 0 100%);
     background-image: url(../assets/homepage/cricket.jpg);
 }
 .homepage .section1 .row3 .image_cont{
-    clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 10% 100%);
     background-image: url(../assets/homepage/basketball.jpg);
+}
+.homepage .section1 .row4 .image_cont{
+    clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%);
+    background-image: url(../assets/homepage/tt.jpg);
+    color: rgb(0, 81, 255);
+}
+.homepage .section1 .row5 .image_cont{
+    clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
+    background-image: url(../assets/homepage/tennis.jpg);
+}
+.homepage .section1 .row6 .image_cont{
+    clip-path: polygon(0 0, 90% 0, 100% 100%, 0 100%);
+    background-image: url(../assets/homepage/batminton.jpg);
+}
+.homepage .section1 .row7 .image_cont{
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 10% 100%);
+    background-image: url(../assets/homepage/volleyball.jpg);
+}
+.homepage .section1 .row8 .image_cont{
+    clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%);
+    background-image: url(../assets/homepage/hockey.jpg);
 }
 .homepage .section1 .row .content{
     display: flex;
@@ -135,6 +160,41 @@
 }
 .homepage .section1 .row3 .content .shop_btn:hover{
     background-color: rgb(238,104,45);
+}
+.homepage .section1 .row4 .content .shop_btn{
+    border: 2px solid hsl(207, 100%, 50%);
+    color: hsl(199, 100%, 40%);
+}
+.homepage .section1 .row4 .content .shop_btn:hover{
+    background-color: hsl(207, 100%, 50%);
+}
+.homepage .section1 .row5 .content .shop_btn{
+    border: 2px solid hsl(140, 77%, 38%);
+    color: hsl(140, 77%, 38%);
+}
+.homepage .section1 .row5 .content .shop_btn:hover{
+    background-color: hsl(140, 77%, 38%);
+}
+.homepage .section1 .row6 .content .shop_btn{
+    border: 2px solid rgb(255, 208, 0);
+    color: rgb(255, 208, 0);
+}
+.homepage .section1 .row6 .content .shop_btn:hover{
+    background-color: rgb(255, 208, 0);
+}
+.homepage .section1 .row7 .content .shop_btn{
+    border: 2px solid hsl(283, 100%, 50%);
+    color: hsl(283, 100%, 50%);
+}
+.homepage .section1 .row7 .content .shop_btn:hover{
+    background-color: hsl(283, 100%, 50%);
+}
+.homepage .section1 .row8 .content .shop_btn{
+    border: 2px solid rgb(139, 57, 57);
+    color: rgb(139, 57, 57);
+}
+.homepage .section1 .row8 .content .shop_btn:hover{
+    background-color: rgb(139, 57, 57);
 }
 .homepage .section1 .row .content .shop_btn i{
     font-size: 20px;
