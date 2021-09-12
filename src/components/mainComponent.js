@@ -22,20 +22,20 @@ export default function Main() {
         <div>
             <Nav />
             <Switch>
-                <Route path="/home" component={Home}/>
-                <Route path="/about" component={Aboutus}/>
-                <Route path="/gallery" component={Gallery}/>
-                <Route path="/contact" component={Contactus}/>
-                <Route path="/shop" component={Categories}/>
-                <Route path="/product" component={product}/>
-                <Route path="/product_detail" component={Prod_D}/>
-                <Route path="/cart" component={Cart}/>
-                <Route path="/checkout" component={Checkout}/>
-                <Route path="/login" component={Login}/>
-                <Route path="/signup" component={Signup}/>
-                <Route path="/account" component={Account}/>
-                <Route path="/your_orders" component={OrderList}/>
-                <Route path="/order_detail" component={OrderDetail}/>
+                <Route path="/home" component={Home} />
+                <Route path="/about" component={Aboutus} />
+                <Route path="/gallery" component={Gallery} />
+                <Route path="/contact" component={Contactus} />
+                <Route path="/shop" component={Categories} />
+                <Route path="/product/:pname" component={product} />
+                <Route path="/product_detail/:cat/:pname" component={Prod_D} />
+                <Route path="/cart" component={Cart} />
+                <Route path="/checkout" component={Checkout} />
+                <Route path="/login" component={Login} />
+                <Route path="/signup" component={Signup} />
+                <Route path="/account" component={Account} />
+                <Route path="/your_orders" component={OrderList} />
+                <Route path="/order_detail" component={OrderDetail} />
                 <Redirect to="/home" />
             </Switch>
             <Footer /> 

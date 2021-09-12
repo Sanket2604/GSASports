@@ -1,5 +1,7 @@
 import React, {useEffect} from 'react'
+import { useParams } from 'react-router'
 import '../css/product_detail.css'
+import products from '../db/productList'
 import cart from '../assets/nav/shopping.svg'
 import shoe from '../assets/show.jpg'
 import arrow_up from '../assets/nav/arrowup.png'
@@ -7,16 +9,30 @@ import arrow_down from '../assets/nav/arrowdown.png'
 import { Link } from 'react-router-dom'
 import Tilt from 'react-vanilla-tilt'
 
+function Size({mainprod}){
+    if(mainprod.size_ava){
+        return mainprod.size.map( size =>
+                <div className="s">{size}</div>
+        )
+    }
+    else{
+        return(<div></div>)
+    }
+}
 export default function Product_detail() {
 
+    const prod = useParams();
+    const mainprod = products.filter(sprod => prod.pname === sprod.name && prod.cat === sprod.category)
     useEffect(() => {
-        document.title = "GSA Sports | Product Type | Product Name"
+        document.title = `GSA Sports | ${prod.cat} | ${prod.pname}`
         window.scrollTo(0, 0)
+        const mainprod = products.filter(sprod => prod.pname === sprod.name && prod.cat === sprod.category)
     }, []);
+
 
     return (
         <div className="prod_det container-fluid">
-            <div className="heading">Product Name</div>
+            <div className="heading">{mainprod[0].name}</div>
             <div className="row">
                 <div className="col-12 col-md-6 col-lg-5">
                     <Tilt  className="img_cont">
@@ -25,15 +41,10 @@ export default function Product_detail() {
                 </div>
                 <div className="col-12 col-md-6 col-lg-7">
                     <div className="content">
-                        <div className="desc">
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem repudiandae voluptatem cum in! Repudiandae nulla voluptate, pariatur est cum atque odio architecto, esse ipsum reiciendis fuga, dolores quasi aliquam commodi?</div>
+                        <div className="desc">{mainprod[0].desc}</div>
                         <div className="size">
                             <div className="heading">Size:</div>
-                            <div className="s active">6</div>
-                            <div className="s">7</div>
-                            <div className="s">8</div>
-                            <div className="s">9</div>
-                            <div className="s">10</div>
+                            <Size mainprod={mainprod[0]}/>
                         </div>
                         <div className="quantity">
                             <div className="counter">

@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 import '../css/order_list.css'
 import { Link } from 'react-router-dom'
 
-function Order_item(){
+function OrderItem(){
     return(
         <div className="col-12 col-lg-6 p-2 p-lg-3">
             <Link to="/order_detail">
@@ -19,7 +19,7 @@ function Order_item(){
     )
 }
 
-export default function Order_list() {
+export default function Orderlist() {
 
     useEffect(() => {
         document.title = "GSA Sports | Your Orders"
@@ -30,10 +30,10 @@ export default function Order_list() {
         <div className="order_list container-fluid">
             <div className="heading">Your Orders</div>
             <div className="row">
-                <Order_item/>
-                <Order_item/>
-                <Order_item/>
-                <Order_item/>
+                <OrderItem/>
+                <OrderItem/>
+                <OrderItem/>
+                <OrderItem/>
             </div>
         </div>
     )
