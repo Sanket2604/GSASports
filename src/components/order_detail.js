@@ -32,6 +32,10 @@ export default function Order_detail() {
     return (
         <div className="cart container mb-5">
             <div className="head">Order Number: </div>
+            <div className="ord_upd_cont">
+                <div className="ord_upd status"><span>Status:</span>Some random status</div>
+                <div className="ord_upd tracking"><span>Tracking Link:</span><a href="" target="_blank">www.linktopackage.com</a></div>
+            </div>
             <div className="row heading">
                 <div className="col-4 col-md-5 col-lg-6">Product</div>
                 <div className="col-2 col-md-2 col-lg-2">Price</div>

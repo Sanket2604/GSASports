@@ -101,6 +101,16 @@
 .cart .cart_item .quantity .counter .controls .down:hover{
     background-color: lightgreen;
 }
+.cart .cart_item .tax{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.cart .cart_item .tax .tp span{
+    font-weight: 500;
+    font-size: 17px;
+}
 .cart .cart_item .cart_btn_cont{
     display: flex;
     justify-content: center;

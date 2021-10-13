@@ -1,72 +1,72 @@
 export const categories  = [
     {
-        id: 'bat',
-        name: 'Cricket',
-        cat_prod: [ 
+        "id": 1,
+        "name": "Cricket",
+        "prodTypes": [ 
             {
-                name: 'Bat',
-                img: '/something'
+                "name": "Bat",
+                "image": "/something"
             },
             {
-                name: 'Ball',
-                img: '/something'
+                "name": "Ball",
+                "image": "/something"
             },
             {
-                name: 'Shirt',
-                img: '/something'
+                "name": "Shirt",
+                "image": "/something"
             },
             {
-                name: 'Trousers',
-                img: '/something'
+                "name": "Trousers",
+                "image": "/something"
             },
             {
-                name: 'Jacket',
-                img: '/something'
+                "name": "Jacket",
+                "image": "/something"
             },
             {
-                name: 'Cap / Hat',
-                img: '/something'
+                "name": "Cap / Hat",
+                "image": "/something"
             },
             {
-                name: 'Shoe',
-                img: '/something'
+                "name": "Shoe",
+                "image": "/something"
             },
             {
-                name: 'Protection',
-                img: '/something'
+                "name": "Protection",
+                "image": "/something"
             },
             {
-                name: 'Stumps',
-                img: '/something'
-            },
-        ],
+                "name": "Stumps",
+                "image": "/something"
+            }
+        ]
     },
     {
-        id: 'foot',
-        name: 'Football',
-        cat_prod: [ 
+        "id": 2,
+        "name": "Football",
+        "prodTypes": [ 
             {
-                name: 'Cleats',
-                img: '/something'
+                "name": "Cleats",
+                "image": "/something"
             },
             {
-                name: 'Socks',
-                img: '/something'
+                "name": "Socks",
+                "image": "/something"
             },
             {
-                name: 'Shin Guards',
-                img: '/something'
+                "name": "Shin Guards",
+                "image": "/something"
             },
             {
-                name: 'Ball',
-                img: '/something'
+                "name": "Ball",
+                "image": "/something"
             },
             {
-                name: 'Jersy',
-                img: '/something'
-            },
-        ],
-    },
+                "name": "Jersy",
+                "image": "/something"
+            }
+        ]
+    }
 ]
 
 export default {

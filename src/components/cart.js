@@ -8,12 +8,12 @@ import '../css/cart.css'
 function CartItem(){
     return(
         <div className="row cart_item mt-3 mb-3">
-            <div className="col-4 col-md-5 col-lg-6 img_cont">
+            <div className="col-4 col-md-4 col-lg-4 img_cont">
                 <img src={shoe} alt=""/>
                 <div className="detail">Product Name</div>
             </div>
             <div className="col-2 col-md-2 col-lg-2 price">₹ Price</div>
-            <div className="col-3 col-md-3 col-lg-2 quantity">
+            <div className="col-3 col-md-2 col-lg-2 quantity">
                 <div className="counter">
                     <input type="number" />
                     <div className="controls">
@@ -21,6 +21,10 @@ function CartItem(){
                         <div className="down"><img src={arrow_down} alt="" style={{transform:"translateY(-3px)"}} height="25px" width="15px" /></div>
                     </div>
                 </div>
+            </div>
+            <div className="col-2 col-md-2 col-lg-2 tax">
+                <div className="tp"><span>SGST:</span> 5%</div>
+                <div className="tp"><span>CGST:</span> 5%</div>
             </div>
             <div className="col-3 col-md-2 col-lg-2 total">₹ Total Price</div>
             <div className="remove_item">-</div>
@@ -33,10 +37,11 @@ export default function Cart() {
         <div className="cart container mb-5">
             <div className="head">Your Cart</div>
             <div className="row heading">
-                <div className="col-4 col-md-5 col-lg-6">Product</div>
+                <div className="col-3 col-md-4 col-lg-4">Product</div>
                 <div className="col-2 col-md-2 col-lg-2">Price</div>
-                <div className="col-3 col-md-3 col-lg-2">Quantity</div>
-                <div className="col-3 col-md-2 col-lg-2">Total</div>
+                <div className="col-2 col-md-2 col-lg-2">Quantity</div>
+                <div className="col-2 col-md-2 col-lg-2">Tax</div>
+                <div className="col-2 col-md-2 col-lg-2">Total</div>
             </div>
             <CartItem />
             <div className="row">

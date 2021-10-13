@@ -24,7 +24,7 @@ function Categories_section(){
     return categories.map( cat =>
         <div className="row">
             <div className="heading" id={cat.id}>{cat.name}</div>
-            <CategoryCard catProd = {cat.cat_prod} />
+            <CategoryCard catProd = {cat.prodTypes} />
         </div>
     )
 }

@@ -1,7 +1,14 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import '../css/footer.css'
 
-export default function Footer() {
+export default function Footer(props) {
+
+    useEffect(() => {
+        if(props.admin==="true"){
+            document.querySelector('.footer').classList.add('true')
+        }
+    })
+
     return (
         <div className="footer">
             <div className="container-fluid" style={{maxWidth: "1800px"}}>

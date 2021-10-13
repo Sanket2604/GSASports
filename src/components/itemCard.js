@@ -5,9 +5,8 @@ import show from '../assets/show.jpg'
 import Tilt from 'react-vanilla-tilt'
 
 export default function ItemCard({sprod}) {
-    
 
-
+    const image = require('../assets/show.jpg')
     if(sprod){
         return (
             <Tilt className="anim_cont">
@@ -30,7 +29,7 @@ export default function ItemCard({sprod}) {
                 <div className="itemCard_cont">
                     <div className="item_card">
                         <div className="img_sec">
-                            <img className="image" src="" alt="" />
+                            <img className="image" src={show} alt="" />
                         </div>
                         <div className="title">Product Name</div>
                         <div className="desc">Description: Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>

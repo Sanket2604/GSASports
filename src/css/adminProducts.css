@@ -1,0 +1,141 @@
+.admin_add_dish{
+    position: absolute;
+    top: 140px;
+    left: 20px;
+    font-size: 25px;
+    border: 2px solid hsl(140, 77%, 38%);
+    background-color: hsl(140, 77%, 48%);
+    color: white;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    transition: 0.5s ease-in-out;
+}
+.admin_add_dish span{
+    position: absolute;
+    width: 110px;
+    text-align: center;
+    z-index: 5;
+    left: -10px;
+    bottom: -30px;
+    opacity: 0;
+    border-radius: 5px;
+    transform: translateY(20px);
+    background-color: hsl(140, 77%, 38%);
+    font-size: 16px;
+    transition: 0.5s ease-in-out;
+}
+.admin_add_dish:hover span{
+    opacity: 1;
+    transform: translateY(0px);
+}
+.admin_add_dish:hover{
+    color: white;
+    cursor: pointer;
+    background-color: hsl(140, 77%, 38%);
+}
+
+.adminProd .breadcrumbs{
+    z-index: 4;
+    margin-left: 90px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    transition: 0.75s ease-in-out;
+    background-color: hsl(140, 77%, 38%,0.9);
+    padding-left: 20px;
+    padding-right: 20px;
+    border-bottom-left-radius: 10px;
+}
+.adminProd .breadcrumbs .row .col-2{
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.adminProd .breadcrumbs .opts{
+    color: white;
+    margin: 5px 0;
+    border: 2px solid white;
+    padding: 5px 20px;
+    border-radius: 40px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+}
+.adminProd .prod_list{
+    margin-top: 30px;
+    margin-left: 90px;
+}
+.admin_itemCard_cont{
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+    margin-bottom: 30px;
+    transform-style: preserve-3d!important;
+    perspective: 1000px!important;
+}
+.admin_itemCard_cont .item_card {
+    background-color: hsl(0, 0%, 98%);
+    height: 100%;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    transform-origin: center;
+    box-shadow: hsla(140, 77%, 38%,0.2) 0px 4px 12px;
+}
+.admin_itemCard_cont .item_card .img_sec{
+    height: 130px;
+    width: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #7ee8fa;
+    background-image: linear-gradient(315deg, #7ee8fa 0%, #80ff72 74%);
+
+    border-radius: 100%;
+}
+.admin_itemCard_cont .item_card .img_sec .image{
+    height: 100px;
+    transition: 0.5s ease-in;
+}
+.admin_itemCard_cont .item_card .title{
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 30px;
+    transition: 0.5s ease-in;
+}
+.admin_itemCard_cont .item_card .desc{
+    margin-top: 10px;
+    font-size: 14px;
+    text-align: center;
+    transition: 0.5s ease-in;
+}
+.admin_itemCard_cont .item_card .view_btn{
+    margin-top: 20px;
+    width: 90%;
+    text-align: center;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 40px;
+    border: 2px solid hsl(140, 77%, 38%);
+    color: hsl(140, 77%, 38%);
+    font-weight: 500;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+}
+.admin_itemCard_cont .item_card .view_btn:hover{
+    background-color: hsl(140, 77%, 38%);
+    color: white;
+}
+.admin_itemCard_cont .item_card .view_btn i{
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 5px;
+}
+

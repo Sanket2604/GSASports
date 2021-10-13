@@ -1,9 +1,14 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import '../css/nav.css'
 import { Link } from 'react-router-dom'
 
-export default function Nav() {
+export default function Nav(props) {
     
+    useEffect(() => {
+        if(props.admin==='true'){
+            document.querySelector('.nav').classList.add('true')
+        }
+    })
     function toggleSideBar(){
         const menuBtn = document.querySelector('.menu-btn');
         if(menuBtn.classList.contains('open')) {
@@ -21,7 +26,6 @@ export default function Nav() {
         document.querySelector('.menu-btn').classList.remove('open');
         document.querySelector('.backdrop').classList.remove('back');
     }
-
     return (
         <div>
             <div className="nav">

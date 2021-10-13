@@ -1,0 +1,66 @@
+.adminUser .user_opt{
+    padding: 30px 5vw;
+    padding-left: 100px;
+}
+.adminUser .user_opt .admin_access{
+    border: 2px solid red;
+    padding: 20px;
+    margin-bottom: 50px;
+}  
+.adminUser .user_opt .table .heading{
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+.adminUser .user_opt .table .field{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 2px solid black;
+    border-bottom: none;
+    height: 100%;
+    position: relative;
+}
+.adminUser .user_opt .table .field:last-child{
+    border: 2px solid black;
+}
+.adminUser .user_opt .table .field .record{
+    width: 25%;
+    text-align: center;
+    border-right: 1px solid black;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: scroll;
+}
+.adminUser .user_opt .table .field .delete{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(40px, -50%);
+    color: white;
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+    background-color: rgb(255,8,0);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.adminUser .user_opt .table .field .record::-webkit-scrollbar {
+    width: 5px;
+}
+.adminUser .user_opt .table .field .record:last-child{
+    border-right: none;
+}
+.adminUser .user_opt .table.normal_users .field .record{
+    width: 16%;
+}
+.adminUser .user_opt .table.normal_users .field .record.address{
+    width: 31%;
+}
+.adminUser .user_opt .table.normal_users .field .record.email{
+    width: 20%;
+}

@@ -1,0 +1,52 @@
+.admin_delete_dish{
+    position: absolute;
+    top: 140px;
+    left: 20px;
+    font-size: 25px;
+    border: 2px solid rgb(227,38,54);
+    background-color: rgb(206,32,41);
+    color: white;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    transition: 0.5s ease-in-out;
+}
+.admin_delete_dish span{
+    position: absolute;
+    width: 120px;
+    text-align: center;
+    z-index: 5;
+    left: -10px;
+    bottom: -30px;
+    opacity: 0;
+    border-radius: 5px;
+    transform: translateY(20px);
+    background-color: hsl(0, 100%, 50%);
+    font-size: 16px;
+    transition: 0.5s ease-in-out;
+}
+.admin_delete_dish:hover span{
+    opacity: 1;
+    transform: translateY(0px);
+}
+.admin_delete_dish:hover{
+    color: white;
+    cursor: pointer;
+    background-color: hsl(0, 100%, 50%);
+}
+
+
+.admin_prod_detail .prod_details{
+    padding: 20px 5vw;
+    padding-left: 100px;
+    overflow: hidden;
+}
+.admin_prod_detail .prod_details .form-group{
+    margin-top: 20px;
+}
+.admin_prod_detail .prod_details .form-group label{
+    text-align: center;
+}

@@ -19,6 +19,19 @@ function Size({mainprod}){
         return(<div></div>)
     }
 }
+function SizeCont({mainprod}){
+    if(mainprod.size_ava){
+        return(
+            <div className="size">
+                <div className="heading">Size:</div>
+                <Size mainprod={mainprod}/>
+            </div>
+        )
+    }
+    else{
+        return(<div></div>)
+    }
+}
 export default function Product_detail() {
 
     const prod = useParams();
@@ -42,10 +55,7 @@ export default function Product_detail() {
                 <div className="col-12 col-md-6 col-lg-7">
                     <div className="content">
                         <div className="desc">{mainprod[0].desc}</div>
-                        <div className="size">
-                            <div className="heading">Size:</div>
-                            <Size mainprod={mainprod[0]}/>
-                        </div>
+                        <SizeCont mainprod={mainprod[0]} />
                         <div className="quantity">
                             <div className="counter">
                                 <input type="number" />

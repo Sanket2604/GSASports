@@ -1,0 +1,38 @@
+.admin_ord_detail{
+    overflow: hidden;
+}
+.admin_ord_detail form{
+    margin-bottom: 50px;
+}
+.admin_ord_detail .form-group{
+    margin-top: 30px;
+}
+.admin_ord_detail .form-group label{
+    text-align: center;
+}
+.admin_ord_detail .head_{
+    font-size: 24px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.admin_btn_cont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.admin_btn_cont .admin_sub_btn{
+    border-radius: 40px;
+    padding: 5px 30px;
+    border: 2px solid hsl(140, 77%, 38%);
+    color: hsl(140, 77%, 38%);
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+}
+.admin_btn_cont .admin_sub_btn:hover{
+    background-color: hsl(140, 77%, 38%);
+    color: white;
+    transform: scale(1.1);
+    box-shadow: hsla(140, 77%, 38%, 0.69) 0px 5px 15px;
+}

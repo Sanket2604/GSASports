@@ -1,0 +1,33 @@
+.admin_msg_detail{
+    padding: 40px 5vw;
+    padding-left: 100px;
+}
+.admin_msg_detail .msg_detail .heading{
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+}
+.admin_msg_detail .msg_detail .heading::after{
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 3px;
+    width: 100px;
+    background-color: hsl(140, 77%, 38%);
+}
+.admin_msg_detail .msg_detail .opt{
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+.admin_msg_detail .msg_detail .opt span{
+    font-size: 20px;
+    font-weight: 600;
+    margin-right: 20px;
+    color: hsl(140, 77%, 38%);
+}
+.admin_msg_detail .msg_detail .opt.msg div{
+    margin-top: 10px;
+}

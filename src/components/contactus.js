@@ -50,8 +50,8 @@ export default function Contactus() {
                             </div>
                         </div>
                         <div className="notes">
-                            <p className="heading">Requirements</p>
-                            <textarea id="t" name="message" placeholder="Let us know about your requirements" required></textarea>
+                            <p className="heading">Message</p>
+                            <textarea id="t" name="message" placeholder="Enter Your Message Here" required></textarea>
                         </div>
                         <div className="submit">Send Message</div>
                     </form>

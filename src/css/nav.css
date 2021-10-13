@@ -37,6 +37,9 @@ a:hover{
 body{
     background-color: rgb(245, 255, 245)!important;
 }
+.nav.true{
+    display: none;
+}
 .nav{
     position: fixed;
     display: flex;

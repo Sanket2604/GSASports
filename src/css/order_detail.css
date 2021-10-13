@@ -1,3 +1,13 @@
+.cart .ord_upd_cont{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+.cart .ord_upd_cont .ord_upd span{
+    font-weight: 500;
+    margin-right: 8px;
+    color: hsl(140, 77%, 28%);
+}
 .cart .row3{
     margin-top: 50px;
 }

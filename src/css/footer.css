@@ -1,3 +1,6 @@
+.footer.true{
+    display: none;
+}
 .phn_modal .modal-header{
     border: none;
     background-color: transparent !important;

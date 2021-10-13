@@ -1,0 +1,80 @@
+.admin_toggle,
+.admin_homebtn{
+    position: absolute;
+    top: 80px;
+    left: 20px;
+    font-size: 25px;
+    border: 2px solid hsl(140, 77%, 38%);
+    background-color: hsl(140, 77%, 48%);
+    color: white;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    transition: 0.5s ease-in-out;
+}
+.admin_homebtn{
+    top: 20px;
+}
+.admin_toggle:hover,
+.admin_homebtn:hover{
+    cursor: pointer;
+    background-color: hsl(140, 77%, 38%);
+}
+
+
+.adminHome .home{
+    padding: 30px 5vw;
+}
+.adminHome .home .row .box{
+    height: 280px;
+    margin: 20px;
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 28px;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+}
+.adminHome .home .row .box i{
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+.adminHome .home .row .box:hover{
+    transform: translateY(-10px);
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 25px -5px, rgba(0, 0, 0, 0.1) 0px 10px 10px -5px;
+}
+.adminHome .home .row .box.users{
+    border: 2px solid hsl(347, 100%, 50%);
+    background-color: hsla(350, 81%, 48%, 0.69);
+}
+.adminHome .home .row .box.users:hover{
+    background-color: hsl(350, 81%, 58%);
+}
+.adminHome .home .row .box.products{
+    border: 2px solid hsl(140, 77%, 38%);
+    background-color: hsla(140, 77%, 38%, 0.69);
+}
+.adminHome .home .row .box.products:hover{
+    background-color: hsla(140, 77%, 48%);
+}
+.adminHome .home .row .box.orders{
+    border: 2px solid hsl(37, 100%, 50%);
+    background-color: hsla(24, 100%, 50%, 0.8);
+}
+.adminHome .home .row .box.orders:hover{
+    background-color: hsl(24, 100%, 50%);
+}
+.adminHome .home .row .box.msg{
+    border: 2px solid hsl(224, 64%, 31%);
+    background-color: hsla(224, 64%, 45%, 0.8);
+}
+.adminHome .home .row .box.msg:hover{
+    background-color: hsl(224, 64%, 45%);
+}

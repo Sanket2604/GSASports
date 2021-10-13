@@ -1,0 +1,39 @@
+.admin_msg{
+    padding: 40px 5vw;
+    padding-left: 100px;
+}
+.admin_msg .msg_sec{
+    border-bottom: 2px solid hsl(140, 77%, 38%);
+    margin-bottom: 20px;
+}
+.admin_msg .msg_sec .heading{
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+.admin_msg .msg_sec .msg{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px;
+    border-radius: 10px;
+    color: white;
+    background-color: hsl(140, 77%, 38%);
+    border: 2px solid hsl(140, 77%, 48%);
+    margin-bottom: 20px;
+    font-size: 18px;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+}
+.admin_msg .msg_sec.read_msgs .heading{
+    margin-top: 60px;
+}
+.admin_msg .msg_sec.read_msgs .msg{
+    background-color: white;
+    color: black;
+}
+.admin_msg .msg_sec .msg:hover{
+    transform: scale(1.01);
+    box-shadow: hsla(140, 77%, 38%, 0.3) 0px 3px 8px;
+}
