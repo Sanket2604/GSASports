@@ -1,70 +1,117 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
+import { Redirect, useParams } from 'react-router'
 import shoe from '../assets/show.jpg'
+import axios from 'axios'
+import { url } from './url'
 import '../css/cart.css'
 import '../css/order_detail.css'
+import Loader from './loader'
 
-function CartItem(){
-    return(
-        <div className="row cart_item mt-3 mb-3">
+function CartItem({orderItems}){
+    return orderItems.map(item=>
+        <div className="row cart_item mt-3 mb-3" id={item._id}>
             <div className="col-4 col-md-5 col-lg-6 img_cont">
                 <img src={shoe} alt=""/>
-                <div className="detail">Product Name</div>
+                <div className="detail">{item.products.name}</div>
             </div>
-            <div className="col-2 col-md-2 col-lg-2 price">₹ Price</div>
+            <div className="col-2 col-md-2 col-lg-2 price">₹ {item.products.price}</div>
             <div className="col-3 col-md-3 col-lg-2 quantity">
                 <div className="counter">
-                    <input type="number" style={{border: "1px solid limegreen", borderRadius: "5px"}} disabled/>
-                    
+                    <input type="number" style={{border: "1px solid limegreen", borderRadius: "5px"}} value={item.quantity} disabled/>
                 </div>
             </div>
-            <div className="col-3 col-md-2 col-lg-2 total">₹ Total Price</div>
+            <div className="col-3 col-md-2 col-lg-2 total">₹ {item.total}</div>
         </div>
     )
 }
 
 export default function Order_detail() {
 
+    const [show, setShow] = useState(false)
+    const [response, setResponse] = useState(false)
+    const [order, setOrder] = useState()
+    const [user, setUser] = useState()
+
+    const params = useParams()
+
     useEffect(() => {
         document.title = "GSA Sports | Order Detail"
         window.scrollTo(0, 0)
+        const token = localStorage.getItem('token')
+        axios
+        .get(url+'/order/'+params.ordID,{
+            headers: { Authorization: `Bearer ${token}` }
+        })
+        .then((res)=>{
+            if(res.status===200)
+                setShow(true)
+            setOrder(res.data)
+            setResponse(true)
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+        axios
+        .get(url+'/user/getUser',{
+            headers: { Authorization: `Bearer ${token}` }
+        })
+        .then((res)=>{
+            setUser(res.data)
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
     }, []);
 
-    return (
-        <div className="cart container mb-5">
-            <div className="head">Order Number: </div>
-            <div className="ord_upd_cont">
-                <div className="ord_upd status"><span>Status:</span>Some random status</div>
-                <div className="ord_upd tracking"><span>Tracking Link:</span><a href="" target="_blank">www.linktopackage.com</a></div>
-            </div>
-            <div className="row heading">
-                <div className="col-4 col-md-5 col-lg-6">Product</div>
-                <div className="col-2 col-md-2 col-lg-2">Price</div>
-                <div className="col-3 col-md-3 col-lg-2">Quantity</div>
-                <div className="col-3 col-md-2 col-lg-2">Total</div>
-            </div>
-            <CartItem />
-            <div className="row">
-                <div className="total_cont">
-                    <div>Total</div>
-                    <div className="total">₹ Total</div>
-                </div>
-            </div>
-            <div className="row row3">
-                <div className="col-12 col-md-6 p-3">
-                    <div className="add bill_add">
-                        <div className="heading">Billing Address</div>
-                        <div className="name">Name: Full Name</div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, voluptatum dolores hic quo corrupti harum voluptas placeat ad nam? Id.</p>
+    if(response){
+        if(show){
+            return (
+                <div className="cart container mb-5">
+                    <div className="head">Order Number: {order._id}</div>
+                    <div className="ord_upd_cont">
+                        <div className="ord_upd status"><span>Status:</span>{order.status}</div>
+                        <div className="ord_upd tracking"><span>Tracking Link:</span><a href="" target="_blank">{order.tracking}</a></div>
+                    </div>
+                    <div className="row heading">
+                        <div className="col-4 col-md-5 col-lg-6">Product</div>
+                        <div className="col-2 col-md-2 col-lg-2">Price</div>
+                        <div className="col-3 col-md-3 col-lg-2">Quantity</div>
+                        <div className="col-3 col-md-2 col-lg-2">Total</div>
+                    </div>
+                    <CartItem orderItems={order.orderItems} />
+                    <div className="row">
+                        <div className="total_cont">
+                            <div>Total</div>
+                            <div className="total">₹ {order.grandTotal}</div>
+                        </div>
+                    </div>
+                    <div className="row row3">
+                        <div className="col-12 col-md-6 p-3">
+                            <div className="add bill_add">
+                                <div className="heading">Billing Address</div>
+                                <div className="name">Name: {user.firstname} {user.lastname}</div>
+                                <p>{user.billing}</p>
+                            </div>
+                        </div>
+                        <div className="col-12 col-md-6 p-3">
+                            <div className="add ship_add">
+                                <div className="heading">Shipping Address</div>
+                                <div className="name">Name: {order.shipping.name}</div>
+                                <p>{order.shipping.address}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div className="col-12 col-md-6 p-3">
-                    <div className="add ship_add">
-                        <div className="heading">Shipping Address</div>
-                        <div className="name">Name: Full Name</div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, voluptatum dolores hic quo corrupti harum voluptas placeat ad nam? Id.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    )
+            )
+        }
+        else{
+            return <Redirect to="/login" />
+        }
+    }
+    else{
+        return(
+            <Loader/>
+        )
+    }
+    
 }

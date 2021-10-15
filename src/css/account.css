@@ -65,12 +65,41 @@
     margin-left: 20px;
     color: hsl(140, 77%, 38%);
 }
+.account_cont .row2 .column2 .ship_add{
+    text-align: center;
+}
+.account_cont .row2 .column2 .ship_add .add_ship{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    padding: 10px 30px;
+    font-size: 14px;
+    font-weight: 500;
+    border: 2px dashed hsl(140, 77%, 28%);
+    color: hsl(140, 77%, 38%);
+    width: fit-content;
+    border-radius: 40px;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+}
+.account_cont .row2 .column2 .ship_add .add_ship:hover{
+    border: 2px solid hsl(140, 77%, 28%);
+    background-color: hsl(140, 77%, 38%);
+    color: white;
+}
+.account_cont .row2 .column2 .ship_add .add_ship i{
+    margin-right: 10px;
+    transition: 0.5s ease-in-out;
+}
+.account_cont .row2 .column2 .ship_add .add_ship:hover i{
+    color: white;
+}
 .account_cont .row2 .column2{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    max-height: 500px;
 }
 .account_cont .row2 .column2 .order_btn{
     background-color: hsl(140, 77%, 38%);

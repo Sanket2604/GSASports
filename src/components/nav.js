@@ -1,13 +1,62 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import '../css/nav.css'
-import { Link } from 'react-router-dom'
+import axios from 'axios'
+import { url } from './url'
+import { Link, useHistory } from 'react-router-dom'
+
+
+function Loginopt({show}){
+
+    function logout(){
+        localStorage.clear()
+        window.location.reload()
+    }
+
+    if(show){
+        return(
+            <Link to="/account">
+                <div className="opt opt2">
+                    <div className="dropdown">
+                        <Link to="/home"><div className="option" onClick={logout}>Logout</div></Link>
+                    </div>
+                </div>
+            </Link>
+        )
+    }
+    else{
+        return(
+            <Link to="/login">
+                <div className="opt opt2">
+                    <div className="dropdown">
+                        <Link to="/login"><div className="option">Signin</div></Link>
+                        <Link to="/signup"><div className="option">Signup</div></Link>
+                    </div>
+                </div>
+            </Link>
+        )
+    }
+}
 
 export default function Nav(props) {
-    
+
+    const [show, setShow] = useState(false) 
+
     useEffect(() => {
         if(props.admin==='true'){
             document.querySelector('.nav').classList.add('true')
         }
+        const token = localStorage.getItem('token')
+        axios
+        .get(url+'/user/verify',{
+            headers: { Authorization: `Bearer ${token}` }
+        })
+        .then((res)=>{
+            if(res.status===200)
+                setShow(true)
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
     })
     function toggleSideBar(){
         const menuBtn = document.querySelector('.menu-btn');
@@ -38,14 +87,7 @@ export default function Nav(props) {
                 </div>
                 <div className="nav_sec">
                     <Link to="/cart"><div className="opt opt1"></div></Link>
-                    <Link to="login">
-                        <div className="opt opt2">
-                            <div className="dropdown">
-                                <Link to="/login"><div className="option">Signin</div></Link>
-                                <Link to="/signup"><div className="option">Signup</div></Link>
-                            </div>
-                        </div>
-                    </Link>
+                    <Loginopt show={show} />
                 </div>
                 <div className="menu-btn" style={{transition: "all .5s ease-in-out"}} onClick={toggleSideBar}>
                     <div className="menu-btn_burger" style={{transition: "all .5s ease-in-out"}}></div>

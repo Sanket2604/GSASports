@@ -28,7 +28,7 @@ import { Switch, Route, Redirect } from 'react-router'
 
 export default function Main() {
     const [admin, setAdmin] = useState("false");
-    const [token, setToken] = useState()
+    
     return (
         <div>
             <Nav admin={admin} />
@@ -48,14 +48,14 @@ export default function Main() {
                 <Route path="/contact" component={Contactus} />
                 <Route path="/shop" component={Categories} />
                 <Route path="/product/:pname" component={product} />
-                <Route path="/product_detail/:cat/:pname" component={() => <ProdDetail token={token}/>} />
-                <Route path="/cart" component={() => <Cart token={token}/>} />
-                <Route path="/checkout" component={() => <Checkout token={token} />} />
-                <Route path="/login" component={() => <Login setToken={setToken} />} />
+                <Route path="/product_detail/:cat/:pname" component={() => <ProdDetail />} />
+                <Route path="/cart" component={() => <Cart />} />
+                <Route path="/checkout" component={() => <Checkout  />} />
+                <Route path="/login" component={() => <Login />} />
                 <Route path="/signup" component={() => <Signup />} />
-                <Route path="/account" component={() => <Account token={token}/>} />
-                <Route path="/your_orders" component={() => <OrderList token={token}/>}/>
-                <Route path="/order_detail" component={() => <OrderDetail token={token}/>} />
+                <Route path="/account" component={() => <Account />} />
+                <Route path="/your_orders" component={() => <OrderList />}/>
+                <Route path="/order_detail/:ordID" component={() => <OrderDetail />} />
                 <Redirect to="/home" />
             </Switch>
             <Footer admin={admin}/> 
