@@ -57,13 +57,13 @@
 }
 @keyframes heading {
     0%{
-        transform: translateX(-20%);
+        transform: translateX(-20px);
     }
     50%{
         transform: translateX(0%);
     }
     100%{
-        transform: translateX(-20%);
+        transform: translateX(-20px);
     }
 }
 .homepage .section1 .row {

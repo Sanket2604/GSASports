@@ -31,11 +31,8 @@
     top: 65px;
     left: 0;
     width: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
     opacity: 0;
-    transform: translateY(-230px);
+    transform: translateY(-110%);
     transition: 0.75s ease-in-out;
     background-color: hsl(140, 77%, 38%,0.9);
 }
@@ -49,6 +46,7 @@
     border: 2px solid white;
     padding: 5px 20px;
     border-radius: 40px;
+    text-align: center;
     transition: 0.5s ease-in-out;
 }
 .cat_page .breadcrumbs .opts:hover{
@@ -74,7 +72,7 @@
     background-color: hsl(140, 77%, 38%);
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
-    animation: heading 1.5s ease-in-out infinite;
+    animation: heading 20s ease-in-out infinite;
 }
 .cat_page .category .row > .heading{
     font-size: 24px;

@@ -7,7 +7,7 @@ import Loader from './loader'
 
 function ProdNames({prods}){
     return prods.map(prod=>
-        <span>{prod.products.name},</span>
+        <span id={prod.id}>{prod.products.name},</span>
     )
 }
 function DateFormat({timestamp}) {
@@ -41,7 +41,6 @@ function OrderItem({orders}){
 export default function Orderlist() {
     
     const [response, setResponse] = useState(false)
-    const [show, setShow] = useState(false)
     const [orders, setOrders] = useState()
 
     useEffect(() => {
@@ -54,17 +53,16 @@ export default function Orderlist() {
         })
         .then((res)=>{
             if(res.status===200)
-                setShow(true)
-            setOrders(res.data)
+                setOrders(res.data)
             setResponse(true)
         })
         .catch((err)=>{
             console.log(err)
         })
-    }, []);
+    });
 
     if(response){
-        if(show){
+        if(orders){
             return (
                 <div className="order_list container-fluid">
                     <div className="heading">Your Orders</div>

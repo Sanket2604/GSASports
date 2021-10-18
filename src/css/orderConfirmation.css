@@ -1,0 +1,97 @@
+.order_confirm{
+    padding: 120px 5vw;
+}
+.order_confirm >.heading{
+    font-size: 28px;
+    position: relative;
+    padding-bottom: 10px;
+    margin-bottom: 50px;
+    overflow: hidden;
+    width: fit-content;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+.order_confirm >.heading:after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    width: 100px;
+    background-color: hsl(140, 77%, 38%);
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    animation: heading 20s ease-in-out infinite;
+}
+.order_confirm .cart_cont{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-right: 2px solid hsl(140, 77%, 38%);
+}
+.order_confirm .cart_details{
+    width: 100%;
+    padding: 20px 30px;
+    background-color: hsla(140, 77%, 58%, 0.2);
+    height: fit-content;
+
+}
+.order_confirm .cart_details .row{
+    padding: 15px 0;
+    text-align: center;
+}
+.order_confirm .cart_details .header{
+    border-top: 2px solid hsl(140, 77%, 28%);
+    border-bottom: 2px solid hsl(140, 77%, 28%);
+    font-weight: 500;
+    font-size: 17px;
+    margin-top: 30px;
+}
+.order_confirm .cart_details .subtotal,
+.order_confirm .cart_details .shipping,
+.order_confirm .cart_details .total{
+    font-weight: 500;
+}
+.order_confirm .cart_details .total{
+    border-top: 2px solid hsl(140, 77%, 28%);
+}
+.order_confirm .qr_cont{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.order_confirm .qr_cont .header{
+    padding-left: 20px;
+    font-size: 20px;
+    font-weight: 500;
+}
+.order_confirm .qr_cont .qr_scanner img{
+    height: 280px;
+    margin-top: 20px;
+}
+.order_confirm .qr_cont .pay_met{
+    width: 100%;
+    margin-top: 20px;
+}
+.order_confirm .qr_cont .pay_met .header{
+    font-size: 17px;
+}
+.order_confirm .qr_cont .pay_met .col-3{ 
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 30px 0;
+}
+.order_confirm .qr_cont .pay_met .pay_c{
+    height: 60px;
+    width: 60px;
+    border-radius: 100%;
+    border: 2px solid rgb(200, 200, 200);
+    object-fit: contain;
+    object-position: center;
+}
+.order_confirm .qr_cont .pay_met .pay_c:hover{
+    border: 2px solid hsl(140, 77%, 28%);
+}

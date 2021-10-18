@@ -3,49 +3,9 @@ import axios from 'axios';
 import { url } from './url';
 import { Link, Redirect } from 'react-router-dom';
 import AdminNav from './adminNav';
-import '../css/adminProducts.css'
+import '../css/adminProdOfStock.css'
 import shoe from '../assets/show.jpg'
 import Loader from './loader';
-
-function Filter(props){
-
-    const [cats, setCats] = useState()
-
-    useEffect(()=>{
-        const token = localStorage.getItem('token');
-        axios
-        .get(url+'/categories',{
-            headers: { Authorization: `Bearer ${token}` }
-        })
-        .then((response) =>{
-            setCats(response.data)
-        })
-        .catch(error => {
-            console.log("Failed To Update Cart List")
-        })
-    },[])
-
-    function changeProds(name){
-        let filtered_prod=props.products.filter(prod => prod.sportCat === name)
-        props.setProducts(filtered_prod)
-    }
-
-    if(cats){
-        return cats.map(cat =>
-            <div className="col-2" id={cat._id} onClick={()=>changeProds(cat.name)}>
-                <div className="opts">{cat.name}</div>
-            </div>
-        )
-    }
-    else{
-        return( 
-            <div className="circle_loader_cont">
-                <div className="circle_loader"></div>
-            </div>
-        )
-    }
-    
-}
 
 function ItemCard({products}){
     
@@ -73,13 +33,13 @@ function ItemCard({products}){
         )
     }
 }
-export default function AdminProducts(props) {
+export default function AdminProdOfStock(props) {
 
     const [products, setProducts] = useState()
     const [redirect, setRedirect] = useState(true) 
 
     useEffect(()=>{
-        document.title = "GSA Sports Admin | Products"
+        document.title = "GSA Sports Admin | Products Out Of Stock"
         window.scrollTo(0, 0)
         props.setAdmin("true")
         const token = localStorage.getItem('token');
@@ -92,7 +52,7 @@ export default function AdminProducts(props) {
             setProducts(response.data)
         })
         .catch(error => {
-            console.log("Failed To Update Cart List")
+            console.log(error)
         })
     },[])
 
@@ -121,23 +81,16 @@ export default function AdminProducts(props) {
                     <div className="admin_toggle" onClick={navToggle}>
                         <i className="fa fa-bars"></i>
                     </div>
-                    <Link to="/adminProdDetails/Add_Prod" className="admin_add_dish">
-                        <i className="fa fa-plus"></i>
-                        <span>Add Product</span>
-                    </Link>
                     <AdminNav nav={nav} />
-                    <div className="breadcrumbs">
-                        <div className="container-fluid">
-                            <div className="row">
-                                <Filter setProducts={setProducts} products={products}/>
-                            </div>
-                        </div>
-                        
-                    </div>
                     <div className="prod_list">
                         <div className="container-fluid">
                             <div className="row">
-                                    <ItemCard products={products} />
+                                <h4 className="p-4">Products Out Of Stock</h4>
+                                <ItemCard products={products.filter(prod => prod.stock <= 0)} />
+                            </div>
+                            <div className="row">
+                                <h4 className="p-4">Products On Low Stock</h4>
+                                <ItemCard products={products.filter(prod => prod.stock <= 5)} />
                             </div>
                         </div>
                     </div>
@@ -149,3 +102,4 @@ export default function AdminProducts(props) {
         return <Loader/>        
     }
 }
+

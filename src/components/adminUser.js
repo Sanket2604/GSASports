@@ -1,14 +1,33 @@
 import React, {useEffect, useState} from 'react'
+import axios from 'axios';
+import Loader from './loader';
+import { url } from './url';
 import { Link } from 'react-router-dom';
 import AdminNav from './adminNav';
 import '../css/adminUser.css'
 
 export default function AdminUser(props) {
 
+    const [admin, setAdmin] = useState()
+    const [users, setUsers] = useState()
+    const [nav, setNav] = useState("hide");
+
     useEffect(()=>{
         props.setAdmin("true")
-    })
-    const [nav, setNav] = useState("hide");
+        const token = localStorage.getItem('token')
+        axios
+        .get(url+'/user',{
+            headers: { Authorization: `Bearer ${token}` }
+        })
+        .then((res)=>{
+            setUsers(res.data)
+            setAdmin(true)
+        })
+        .catch((err)=>{
+            setAdmin(false)
+        })
+    },[])
+
     function navToggle(){
         if(nav=="hide"){
             setNav("show")
@@ -17,107 +36,89 @@ export default function AdminUser(props) {
             setNav("hide")
         }
     }
-    return (
-        <div className="adminUser">
-            <Link to="/adminHomepage" className="admin_homebtn">
-                <i class="fa fa-home"></i>
-            </Link>
-            <div className="admin_toggle" onClick={navToggle}>
-                <i class="fa fa-bars"></i>
+
+    function Admin(){
+        return users.filter(user=>user.admin===true).map(user =>
+            <div className="field">
+                <div className="record name">{user.firstname} {user.lastname}</div>
+                <div className="record username">{user.username}</div>
+                <div className="record email">{user.email}</div>
+                <div className="record phnNo">{user.phone}</div>
             </div>
-            <AdminNav nav={nav} />
-            <div className="user_opt">
-                <div className="table admin_access">
-                    <div className="heading">Admin Access</div>
-                    <div className="field">
-                        <div className="record name">Full Name</div>
-                        <div className="record username">Username</div>
-                        <div className="record email">Email</div>
-                        <div className="record phnNo">Phone Number</div>
-                    </div>
-                    <div className="field">
-                        <div className="record name">Sanket Banerjee</div>
-                        <div className="record username">Main Developer</div>
-                        <div className="record email">umaymailme2604@gmail.com</div>
-                        <div className="record phnNo">+91 9900803562</div>
-                    </div>
+        )
+    }
+
+    function NormalUser(){
+        let user = users.filter(user=>user.admin===false)
+        if(user){
+            return user.map(user =>
+                <div className="field">
+                    <div className="record name">{user.firstname} {user.lastname}</div>
+                    <div className="record username">{user.username}</div>
+                    <div className="record address">{user.billing}</div>
+                    <div className="record email">{user.email}</div>
+                    <div className="record phnNo">{user.phone}</div>
+                    <div className="delete" onClick={deleteuser}><i class="fa fa-minus"></i></div>
                 </div>
-                <div className="table normal_users">
-                    <div className="heading">Normal Users</div>
-                    <div className="field">
-                        <div className="record name">Full Name</div>
-                        <div className="record username">Username</div>
-                        <div className="record address">Address</div>
-                        <div className="record email">Email</div>
-                        <div className="record phnNo">Phone Number</div>
+            )
+        }
+        else{
+            <div></div>
+        }
+    }
+    
+    function deleteuser(userID){
+        const token = localStorage.getItem('token')
+        axios
+        .delete(url+'/user/'+userID,{
+            headers: { Authorization: `Bearer ${token}` }
+        })
+        .then(()=>{
+            alert("User Deleted")
+            window.location.href = "/adminUser";
+        })
+        .catch((err)=>{
+            alert(err)
+        })
+    }
+    
+    if(users){
+        return (
+            <div className="adminUser">
+                <Link to="/adminHomepage" className="admin_homebtn">
+                    <i class="fa fa-home"></i>
+                </Link>
+                <div className="admin_toggle" onClick={navToggle}>
+                    <i class="fa fa-bars"></i>
+                </div>
+                <AdminNav nav={nav} />
+                <div className="user_opt">
+                    <div className="table admin_access">
+                        <div className="heading">Admin Access</div>
+                        <div className="field">
+                            <div className="record name">Full Name</div>
+                            <div className="record username">Username</div>
+                            <div className="record email">Email</div>
+                            <div className="record phnNo">Phone Number</div>
+                        </div>
+                        <Admin />
                     </div>
-                    <div className="field">
-                        <div className="record name">Sanket Banerjee</div>
-                        <div className="record username">Main Developer</div>
-                        <div className="record address">Maruti Nandan Appartment, Mahaveer Rescidency, Avalahalli, Yelahanka, Bangalore - 560064</div>
-                        <div className="record email">umaymailme2604@gmail.com</div>
-                        <div className="record phnNo">+91 9900803562</div>
-                        <div className="delete"><i class="fa fa-minus"></i></div>
-                        <div className="delete"><i class="fa fa-minus"></i></div>
-                    </div>
-                    <div className="field">
-                        <div className="record name">Sanket Banerjee</div>
-                        <div className="record username">Main Developer</div>
-                        <div className="record address">Maruti Nandan Appartment, Mahaveer Rescidency, Avalahalli, Yelahanka, Bangalore - 560064</div>
-                        <div className="record email">umaymailme2604@gmail.com</div>
-                        <div className="record phnNo">+91 9900803562</div>
-                        <div className="delete"><i class="fa fa-minus"></i></div>
-                    </div>
-                    <div className="field">
-                        <div className="record name">Sanket Banerjee</div>
-                        <div className="record username">Main Developer</div>
-                        <div className="record address">Maruti Nandan Appartment, Mahaveer Rescidency, Avalahalli, Yelahanka, Bangalore - 560064</div>
-                        <div className="record email">umaymailme2604@gmail.com</div>
-                        <div className="record phnNo">+91 9900803562</div>
-                        <div className="delete"><i class="fa fa-minus"></i></div>
-                    </div>
-                    <div className="field">
-                        <div className="record name">Sanket Banerjee</div>
-                        <div className="record username">Main Developer</div>
-                        <div className="record address">Maruti Nandan Appartment, Mahaveer Rescidency, Avalahalli, Yelahanka, Bangalore - 560064</div>
-                        <div className="record email">umaymailme2604@gmail.com</div>
-                        <div className="record phnNo">+91 9900803562</div>
-                        <div className="delete"><i class="fa fa-minus"></i></div>
-                    </div>
-                    <div className="field">
-                        <div className="record name">Sanket Banerjee</div>
-                        <div className="record username">Main Developer</div>
-                        <div className="record address">Maruti Nandan Appartment, Mahaveer Rescidency, Avalahalli, Yelahanka, Bangalore - 560064</div>
-                        <div className="record email">umaymailme2604@gmail.com</div>
-                        <div className="record phnNo">+91 9900803562</div>
-                        <div className="delete"><i class="fa fa-minus"></i></div>
-                    </div>
-                    <div className="field">
-                        <div className="record name">Sanket Banerjee</div>
-                        <div className="record username">Main Developer</div>
-                        <div className="record address">Maruti Nandan Appartment, Mahaveer Rescidency, Avalahalli, Yelahanka, Bangalore - 560064</div>
-                        <div className="record email">umaymailme2604@gmail.com</div>
-                        <div className="record phnNo">+91 9900803562</div>
-                        <div className="delete"><i class="fa fa-minus"></i></div>
-                    </div>
-                    <div className="field">
-                        <div className="record name">Sanket Banerjee</div>
-                        <div className="record username">Main Developer</div>
-                        <div className="record address">Maruti Nandan Appartment, Mahaveer Rescidency, Avalahalli, Yelahanka, Bangalore - 560064</div>
-                        <div className="record email">umaymailme2604@gmail.com</div>
-                        <div className="record phnNo">+91 9900803562</div>
-                        <div className="delete"><i class="fa fa-minus"></i></div>
-                    </div>
-                    <div className="field">
-                        <div className="record name">Sanket Banerjee</div>
-                        <div className="record username">Main Developer</div>
-                        <div className="record address">Maruti Nandan Appartment, Mahaveer Rescidency, Avalahalli, Yelahanka, Bangalore - 560064</div>
-                        <div className="record email">umaymailme2604@gmail.com</div>
-                        <div className="record phnNo">+91 9900803562</div>
-                        <div className="delete"><i class="fa fa-minus"></i></div>
+                    <div className="table normal_users">
+                        <div className="heading">Normal Users</div>
+                        <div className="field">
+                            <div className="record name">Full Name</div>
+                            <div className="record username">Username</div>
+                            <div className="record address">Address</div>
+                            <div className="record email">Email</div>
+                            <div className="record phnNo">Phone Number</div>
+                        </div>
+                        <NormalUser />
                     </div>
                 </div>
             </div>
-        </div>
-    )
+        )
+    }
+    else{
+        return <Loader />
+    }
 }

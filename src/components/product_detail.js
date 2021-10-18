@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, Component} from 'react'
 import axios from 'axios'
 import { url } from './url'
 import { useParams } from 'react-router'
@@ -13,17 +13,18 @@ import Tilt from 'react-vanilla-tilt'
 import Loader from './loader'
 
 function Size({mainprod}){
-    if(mainprod.size_ava){
+    if(mainprod.sizeAva){
         return mainprod.size.map( size =>
-                <div className="s">{size}</div>
+            <div className="s">{size}</div>
         )
     }
     else{
         return(<div></div>)
     }
 }
+
 function SizeCont({mainprod}){
-    if(mainprod.size_ava){
+    if(mainprod.sizeAva){
         return(
             <div className="size">
                 <div className="heading">Size:</div>
@@ -35,38 +36,63 @@ function SizeCont({mainprod}){
         return(<div></div>)
     }
 }
+
 export default function Product_detail() {
 
     const prod = useParams();
-    const mainprod = products.filter(sprod => prod.pname === sprod.name && prod.cat === sprod.category)
-
-    const [show, setShow] = useState(false)
+    const [mainprod, setMainProd] = useState(false)
+    const [quantity, setQuantity] = useState(1)
 
     useEffect(() => {
         document.title = `GSA Sports | ${prod.cat} | ${prod.pname}`
         window.scrollTo(0, 0)
         const mainprod = products.filter(sprod => prod.pname === sprod.name && prod.cat === sprod.category)
-        document.title = "GSA Sports | Your Orders"
-        window.scrollTo(0, 0)
         const token = localStorage.getItem('token')
         axios
-        .get(url+'/user/verify',{
-            headers: { Authorization: `Bearer ${token}` }
-        })
+        .get(url+'/products/'+prod.pid)
         .then((res)=>{
-            if(res.status===200)
-                setShow(true)
+            setMainProd(res.data)
         })
         .catch((err)=>{
             console.log(err)
         })
     }, []);
 
+    function addToCart(){
+        let token = localStorage.getItem("token")
+        axios
+        .post(url+'/cart',{
+            "prodId": mainprod._id,
+            "quantity": quantity
+        },{
+            headers: { Authorization: `Bearer ${token}` }
+        })
+        .then(()=>{
+            
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+    }
 
-    if(show){
+    function handleInputChange(event){
+        const target = event.target
+        const value = target.value
+        setQuantity(value)
+    }
+    
+    function quantityUpdt(qty) {
+        
+        setQuantity(qty)
+        if(quantity<1){
+            setQuantity(qty)
+        }
+    }
+
+    if(mainprod){
         return (
-            <div className="prod_det container-fluid">
-                <div className="heading">{mainprod[0].name}</div>
+            <div className="prod_det container-fluid" id={mainprod._id}>
+                <div className="heading">{mainprod.name}</div>
                 <div className="row">
                     <div className="col-12 col-md-6 col-lg-5">
                         <Tilt  className="img_cont">
@@ -75,19 +101,19 @@ export default function Product_detail() {
                     </div>
                     <div className="col-12 col-md-6 col-lg-7">
                         <div className="content">
-                            <div className="desc">{mainprod[0].desc}</div>
-                            <SizeCont mainprod={mainprod[0]} />
+                            <div className="desc">{mainprod.description}</div>
+                            <SizeCont mainprod={mainprod} />
                             <div className="quantity">
                                 <div className="counter">
-                                    <input type="number" />
+                                    <input type="number" name="quantity" value={quantity} onChange={handleInputChange}/>
                                     <div className="controls">
-                                        <div className="up"><img src={arrow_up} alt="" style={{transform:"translateY(3px)"}} height="25px" width="15px" /></div>
-                                        <div className="down"><img src={arrow_down} alt="" style={{transform:"translateY(-3px)"}} height="25px" width="15px" /></div>
+                                        <div className="up" onClick={()=>quantityUpdt(quantity+1)}><img src={arrow_up} alt="" style={{transform:"translateY(3px)"}} height="25px" width="15px" /></div>
+                                        <div className="down" onClick={()=>quantityUpdt(quantity-1)}><img src={arrow_down} alt="" style={{transform:"translateY(-3px)"}} height="25px" width="15px" /></div>
                                     </div>
                                 </div>
                             </div>
                             <div className="cart_cont">
-                                <Link to="/cart"><div className="cart_btn">Add To Cart <img src={cart} alt="Error" /></div></Link>
+                                <div className="cart_btn" onClick={addToCart}>Add To Cart <img src={cart} alt="Error" /></div>
                             </div>
                         </div>
                     </div>

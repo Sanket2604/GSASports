@@ -50,3 +50,11 @@
 .admin_prod_detail .prod_details .form-group label{
     text-align: center;
 }
+
+.admin_prod_detail form select{
+    background-color: transparent;
+    padding: 5px 10px;
+    width: 100%;
+    outline: none;
+    border: 1px solid hsl(140, 77%, 38%);
+}

@@ -124,24 +124,24 @@
 }
 .prod_det .content .cart_cont .cart_btn{
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 500;
     width: fit-content;
     border-radius: 50px;
     color: white;
-    padding: 10px 40px;
+    padding: 7px 40px;
     background-color: hsl(140, 100%, 34%);
     border: 2px solid hsl(140, 76%, 50%);
     cursor: pointer;
     transition: 0.5s ease-in-out;
 }
 .prod_det .content .cart_cont .cart_btn:hover{
-    transform: translateY(-5px) scale(1.05);
+    transform: scale(1.03);
     box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
 }
 .prod_det .content .cart_cont .cart_btn img{
     height: 20px;
     margin-left: 5px;
-    animation: btn_arrow 2s ease-in-out infinite;
+    animation: btn_arrow 4s ease-in-out infinite;
 }
 @keyframes btn_arrow {
     0%{

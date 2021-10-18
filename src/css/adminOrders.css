@@ -2,8 +2,32 @@
     padding: 20px 5vw;
     padding-left: 100px;
 }
+.search_bar{
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+.search_bar input{
+    border: 2px solid hsl(140, 77%, 28%);
+    outline: none;
+    border-radius: 3px;
+    padding: 5px 8px;
+    margin-right: 20px;
+    width: 250px;
+}
+.search_bar i{
+    background-color: hsl(140, 77%, 38%);
+    padding: 10px;
+    color: white;
+    border-radius: 100%;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+}
+.search_bar i:hover{
+    background-color: hsl(140, 77%, 48%);
+}
 .adminOrd .orders > .heading{
-    font-size: 28px;
+    font-size: 24px;
     position: relative;
     padding-bottom: 10px;
     margin-bottom: 50px;
@@ -19,11 +43,11 @@
     left: 0;
     bottom: 0;
     height: 4px;
-    width: 70%;
+    width: 100px;
     background-color: hsl(140, 77%, 38%);
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
-    animation: heading 1.5s ease-in-out infinite;
+    animation: heading 20s ease-in-out infinite;
 }
 .adminOrd .order_item{
     border: 2px solid hsl(140, 77%, 28%);

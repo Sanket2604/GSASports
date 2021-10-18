@@ -27,7 +27,6 @@ function CartItem({orderItems}){
 
 export default function Order_detail() {
 
-    const [show, setShow] = useState(false)
     const [response, setResponse] = useState(false)
     const [order, setOrder] = useState()
     const [user, setUser] = useState()
@@ -44,19 +43,8 @@ export default function Order_detail() {
         })
         .then((res)=>{
             if(res.status===200)
-                setShow(true)
-            setOrder(res.data)
+                setOrder(res.data)
             setResponse(true)
-        })
-        .catch((err)=>{
-            console.log(err)
-        })
-        axios
-        .get(url+'/user/getUser',{
-            headers: { Authorization: `Bearer ${token}` }
-        })
-        .then((res)=>{
-            setUser(res.data)
         })
         .catch((err)=>{
             console.log(err)
@@ -64,13 +52,13 @@ export default function Order_detail() {
     }, []);
 
     if(response){
-        if(show){
+        if(order){
             return (
                 <div className="cart container mb-5">
                     <div className="head">Order Number: {order._id}</div>
                     <div className="ord_upd_cont">
                         <div className="ord_upd status"><span>Status:</span>{order.status}</div>
-                        <div className="ord_upd tracking"><span>Tracking Link:</span><a href="" target="_blank">{order.tracking}</a></div>
+                        <div className="ord_upd tracking"><span>Tracking Link:</span><a href={order.tracking} target="_blank">{order.tracking}</a></div>
                     </div>
                     <div className="row heading">
                         <div className="col-4 col-md-5 col-lg-6">Product</div>
@@ -89,8 +77,8 @@ export default function Order_detail() {
                         <div className="col-12 col-md-6 p-3">
                             <div className="add bill_add">
                                 <div className="heading">Billing Address</div>
-                                <div className="name">Name: {user.firstname} {user.lastname}</div>
-                                <p>{user.billing}</p>
+                                <div className="name">Name: {order.user.firstname} {order.user.lastname}</div>
+                                <p>{order.user.billing}</p>
                             </div>
                         </div>
                         <div className="col-12 col-md-6 p-3">

@@ -14,11 +14,22 @@
     transition: 0.5s ease-in-out;
     border: 2px solid hsl(140, 77%, 28%);
 }
+.checkout .save_add .box.no_add{
+    text-align: center;
+    padding: 20px 30px;
+    border: 2px dashed hsl(140, 77%, 28%);
+}
 .checkout .save_add .box:hover{
     transform: scale(1.025);
     color: white;
     background-color: hsl(140, 77%, 48%);
     box-shadow: hsla(140, 77%, 38%, 0.3) 0px 13px 27px -5px, hsla(140, 77%, 48%, 0.9) 0px 8px 16px -8px;
+}
+.checkout .save_add .box.no_add:hover{
+    transform: scale(1);
+    color: black;
+    background-color: hsla(140, 77%, 58%, 0.2);
+    box-shadow: none;
 }
 .checkout .save_add .box h5 span{
     font-size: 14px;
@@ -62,6 +73,28 @@
 .checkout .new_add .form-group{
     margin-top: 20px;
 }
+.checkout .new_add .submit_cont{
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+.checkout .new_add .submit_cont .submit_btn{
+    border: 2px solid hsl(140, 77%, 28%);
+    color: hsl(140, 77%, 28%);
+    font-weight: 500;
+    padding: 10px 30px;
+    border-radius: 50px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+}
+.checkout .new_add .submit_cont .submit_btn:hover{
+    color: white;
+    transform: scale(1.05);
+    border: 2px solid hsl(140, 77%, 28%);
+    background-color: hsl(140, 77%, 48%);
+    box-shadow: hsla(140, 77%, 38%, 0.3) 0px 13px 27px -5px, hsla(140, 77%, 48%, 0.9) 0px 8px 16px -8px;
+}
 .checkout .order_summary{
     padding: 20px 30px;
     background-color: hsla(140, 77%, 58%, 0.2);
@@ -102,6 +135,26 @@
 }
 .checkout .order_summary .pay_cont .pay_btn:hover{
     color: white;
-    border: 2px solid hsl(140, 77%, 48%);
+    border: 2px solid hsl(140, 77%, 28%);
     background-color: hsl(140, 77%, 48%);
+}
+
+.circle_loader_cont{
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.circle_loader_cont .circle_loader{
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    border: 7px solid #f3f3f3;
+    border-top: 7px solid hsl(140, 77%, 38%);
+    border-bottom: 7px solid hsl(140, 77%, 38%);
+    animation: spin 2s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

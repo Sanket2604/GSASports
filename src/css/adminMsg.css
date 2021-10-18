@@ -32,8 +32,24 @@
 .admin_msg .msg_sec.read_msgs .msg{
     background-color: white;
     color: black;
+    position: relative;
 }
 .admin_msg .msg_sec .msg:hover{
-    transform: scale(1.01);
+    transform: scale(1.005);
     box-shadow: hsla(140, 77%, 38%, 0.3) 0px 3px 8px;
+}
+.admin_msg .msg_sec.read_msgs .msg .delete{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(40px, -50%);
+    color: white;
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+    background-color: rgb(255,8,0);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
