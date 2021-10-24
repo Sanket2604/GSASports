@@ -52,13 +52,13 @@ export default function AdminUser(props) {
         let user = users.filter(user=>user.admin===false)
         if(user){
             return user.map(user =>
-                <div className="field">
+                <div className="field" id={user._id}>
                     <div className="record name">{user.firstname} {user.lastname}</div>
                     <div className="record username">{user.username}</div>
                     <div className="record address">{user.billing}</div>
                     <div className="record email">{user.email}</div>
                     <div className="record phnNo">{user.phone}</div>
-                    <div className="delete" onClick={deleteuser}><i class="fa fa-minus"></i></div>
+                    <div className="delete" onClick={()=>deleteuser(user._id)}><i class="fa fa-minus"></i></div>
                 </div>
             )
         }
@@ -70,7 +70,7 @@ export default function AdminUser(props) {
     function deleteuser(userID){
         const token = localStorage.getItem('token')
         axios
-        .delete(url+'/user/'+userID,{
+        .delete(url+'/user/deleteUser/'+userID,{
             headers: { Authorization: `Bearer ${token}` }
         })
         .then(()=>{

@@ -95,7 +95,7 @@
     transition: none;
 } */
 .itemCard_cont .item_card:hover .image{
-    transform: translateZ(-50px) rotateZ(-20deg);
+    transform: translateZ(-50px);
 }
 .itemCard_cont .item_card:hover .title{
     transform: translateZ(40px);

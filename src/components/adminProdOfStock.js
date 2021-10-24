@@ -8,8 +8,7 @@ import shoe from '../assets/show.jpg'
 import Loader from './loader';
 
 function ItemCard({products}){
-    
-    if(products){
+    if(products.length>0){
         return products.map(prod =>
             <div className="col-3" id={prod._id}>
                 <div className="admin_itemCard_cont">
@@ -27,9 +26,7 @@ function ItemCard({products}){
     }
     else{
         return(
-            <div className="circle_loader_cont">
-                <div className="circle_loader"></div>
-            </div>
+            <h5 className="p-5 pt-4">All Products Have Stock</h5>
         )
     }
 }
@@ -89,8 +86,8 @@ export default function AdminProdOfStock(props) {
                                 <ItemCard products={products.filter(prod => prod.stock <= 0)} />
                             </div>
                             <div className="row">
-                                <h4 className="p-4">Products On Low Stock</h4>
-                                <ItemCard products={products.filter(prod => prod.stock <= 5)} />
+                                <h4 className="p-4">Products On Low Stock <h6 className="pt-2">(Less Than 5 units)</h6></h4>
+                                <ItemCard products={products.filter(prod => prod.stock <= 5 && prod.stock > 0)} />
                             </div>
                         </div>
                     </div>

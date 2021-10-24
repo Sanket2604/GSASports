@@ -32,12 +32,15 @@ class Item extends Component{
     }
 }
 
-export default function OrderConfirmation() {
+export default function OrderConfirmation(props) {
 
     const [cart, setCart] = useState()
     const [redirect, setRedirect] = useState(true)
 
     useEffect(() => {
+        console.log(props.shippingName)
+        console.log(props.shippingAddress)
+        console.log(props.phone)
         document.title = "GSA Sports | Payment"
         window.scrollTo(0, 0)
         const token = localStorage.getItem('token');
@@ -58,8 +61,9 @@ export default function OrderConfirmation() {
         const token = localStorage.getItem('token');
         axios
         .post(url+'/order',{
-            "shippingName": "Sanket Banerjee",
-            "shippingAddress": "#05, 1st Floor, Maruti Nandan Apartment, Mahaveer Rescidency, Avalahalli, Yelahanka, Bangalore 560064, Karnataka"
+            "shippingName": props.shippingName,
+            "shippingAddress": props.shippingAddress,
+            "phone": props.phone
         },{
             headers: { Authorization: `Bearer ${token}` }
         })

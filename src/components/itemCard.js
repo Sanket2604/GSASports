@@ -24,18 +24,9 @@ export default function ItemCard({sprod}) {
     }
     else{
         return (
-            <Tilt className="anim_cont">
-                <div className="itemCard_cont">
-                    <div className="item_card">
-                        <div className="img_sec">
-                            <img className="image" src={show} alt="" />
-                        </div>
-                        <div className="title">Product Name</div>
-                        <div className="desc">Description: Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-                        <Link to="/product_detail" className="view_btn">View Now<i className="fa fa-angle-right"></i></Link>
-                    </div>
-                </div>
-            </Tilt>
+            <div>
+                
+            </div>
         )
     }
 }

@@ -21,7 +21,7 @@
     background-color: hsl(140, 77%, 38%);
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
-    animation: heading 20s ease-in-out infinite;
+    animation: heading 10s ease-in-out infinite;
 }
 .order_confirm .cart_cont{
     display: flex;

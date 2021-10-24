@@ -24,7 +24,7 @@ function DateFormat({timestamp}) {
 }
 function ActiveOrderItem({orders}){
     let order = orders.filter(ord=>ord.status!=="Delivered")
-    if(order){
+    if(order.length>=1){
         return order.map(order=>
             <div className="col-12 col-lg-6 p-2 p-lg-3" id={order._id}>
                 <Link to={`/adminOrdDetail/${order._id}`}>
@@ -41,7 +41,7 @@ function ActiveOrderItem({orders}){
         )
     }
     else{
-        return <div>No Active Orders</div>
+        return <div className="admin_no_active_order">No Active Orders</div>
     }
 }
 function DeliveredOrderItem({orders}){
@@ -68,6 +68,23 @@ function DeliveredOrderItem({orders}){
     }
 }
 
+function TotalSales(props){
+    
+    const [TotalSales, setTotalSales] = useState()
+    let total = 0;
+    useEffect(()=>{
+        props.orders.map(ord=>{
+            total = total + ord.grandTotal
+        })
+        setTotalSales(total)
+    },[])
+
+    return(
+        <div className="total">
+            <b>Total Sales:</b> ₹ {TotalSales}
+        </div>
+    )
+}
 
 export default function AdminOrder(props) {
 
@@ -90,7 +107,7 @@ export default function AdminOrder(props) {
         .catch((err)=>{
             console.log(err)
         })
-    })
+    },[])
     
     const [nav, setNav] = useState("hide");
 
@@ -127,16 +144,17 @@ export default function AdminOrder(props) {
             return (
                 <div className="adminOrd">
                     <Link to="/adminHomepage" className="admin_homebtn">
-                        <i class="fa fa-home"></i>
+                        <i className="fa fa-home"></i>
                     </Link>
                     <div className="admin_toggle" onClick={navToggle}>
-                        <i class="fa fa-bars"></i>
+                        <i className="fa fa-bars"></i>
                     </div>
                     <AdminNav nav={nav} />
                     <div className="search_bar">
                         <input type="text" onChange={orderval} value={ordID} placeholder="Enter Order ID" />
                         <i class="fa fa-search" onClick={search}></i>
                     </div>
+                    <TotalSales orders={orders}/>
                     <div className="orders container-fluid">
                         <div className="heading">Active Orders</div>
                         <div className="row">

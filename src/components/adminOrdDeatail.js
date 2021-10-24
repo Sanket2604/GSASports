@@ -8,12 +8,21 @@ import shoe from '../assets/show.jpg'
 import { Form, FormGroup, Label, Input, Col } from "reactstrap";
 import '../css/adminOrdDetails.css'
 
+function Size(props){
+    if(props.size!=="NA"){
+        return <div>Size: {props.size}</div>
+    }
+    else{
+        return <div></div>
+    }
+    
+}
 function CartItem({orderItems}){
     return orderItems.map(item=>
         <div className="row cart_item mt-3 mb-3" id={item._id}>
             <div className="col-4 col-md-5 col-lg-6 img_cont">
                 <img src={shoe} alt=""/>
-                <div className="detail">{item.products.name}</div>
+                <div className="detail">{item.products.name}<Size size={item.size} /></div>
             </div>
             <div className="col-2 col-md-2 col-lg-2 price">₹ {item.products.price}</div>
             <div className="col-3 col-md-3 col-lg-2 quantity">
@@ -221,13 +230,14 @@ export default function AdminOrdDeatail(props) {
                                     <div className="add bill_add">
                                         <div className="heading">Billing Address</div>
                                         <div className="name">Name: {order.user.firstname} {order.user.lastname}</div>
-                                        <p>{order.user.billing}</p>
+                                        <p>{order.user.billing[0].address}, {order.user.billing[0].landmark}, {order.user.billing[0].city} - {order.user.billing[0].pincode}, {order.user.billing[0].state}</p>
                                     </div>
                                 </div>
                                 <div className="col-12 col-md-6 p-3">
                                     <div className="add ship_add">
                                         <div className="heading">Shipping Address</div>
                                         <div className="name">Name: {order.shipping.name}</div>
+                                        <div>Phone: {order.shipping.phone}</div>
                                         <p>{order.shipping.address}</p>
                                     </div>
                                 </div>

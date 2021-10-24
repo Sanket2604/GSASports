@@ -14,11 +14,11 @@
     left: 0;
     bottom: 0;
     height: 4px;
-    width: 70%;
+    width: 100px;
     background-color: hsl(140, 77%, 38%);
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
-    animation: heading 1.5s ease-in-out infinite;
+    animation: heading 10s ease-in-out infinite;
 }
 .account_cont .row .img_cont{
     margin-top: 30px;
@@ -59,14 +59,93 @@
     font-size: 18px;
     margin-right: 10px;
 }
-.account_cont .row2 .column .sec i{
-    font-size: 18px;
+.account_cont .row2 .column .heading i{
+    font-size: 20px;
     font-weight: 500;
-    margin-left: 20px;
+    margin-left: 10px;
+    color: hsl(140, 77%, 38%);
+    cursor: pointer;
+    position: relative;
+}
+.account_cont .row2 .column .heading i span{
+    position: absolute;
+    bottom: 0;
+    left: 120%;
+    font-size: 16px;
+    color: hsl(140, 77%, 28%);
+    transform: translateY(5px);
+    width: 150px;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: 0.5s ease-in-out;
+}
+.account_cont .row2 .column .heading i:hover span{
+    opacity: 1;
+    height: auto;
+    transform: translateY(0px);
+}
+.account_cont .row2 .column1 .order_btn{
+    background-color: hsl(140, 77%, 38%);
+    border: 2px solid hsl(140, 77%, 28%);
+    color: white;
+    font-size: 18px;
+    padding: 8px 38px;
+    border-radius: 40px;
+    margin-top: 30px;
+    width: fit-content;
+    margin: 50px auto;
+    transition: 0.5s ease-in-out;
+}
+.account_cont .row2 .column1 .order_btn:hover{
+    background-color: white;
     color: hsl(140, 77%, 38%);
 }
 .account_cont .row2 .column2 .ship_add{
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.account_cont .row2 .column2 .ship_add .shipping_box{
+    text-align: justify;
+    border: 2px solid hsl(140, 77%, 28%);
+    border-radius: 5px;
+    padding: 20px 60px 20px 30px;
+    margin-top: 20px;
+    background-color: hsla(140, 77%, 38%, 0.1);
+    width: 90%;
+    position: relative;
+}
+.account_cont .row2 .column2 .ship_add .shipping_box div{
+    margin-top: 5px;
+}
+.account_cont .row2 .column2 .ship_add .shipping_box span{
+    font-size: 17px;
+    font-weight: 500;
+}
+.account_cont .row2 .column2 .ship_add .shipping_box i{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: white;
+    background-color: hsl(140, 77%, 38%);
+    width: 35px;
+    height: 35px;
+    font-size: 17px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 2px solid hsl(140, 77%, 38%);
+    transition: 0.5s ease-in-out;
+}
+.account_cont .row2 .column2 .ship_add .shipping_box i.fa-edit{
+    bottom: 50px;
+}
+.account_cont .row2 .column2 .ship_add .shipping_box i:hover{
+    border: 2px solid hsl(140, 77%, 28%);
 }
 .account_cont .row2 .column2 .ship_add .add_ship{
     display: flex;
@@ -101,17 +180,127 @@
     align-items: center;
     justify-content: center;
 }
-.account_cont .row2 .column2 .order_btn{
-    background-color: hsl(140, 77%, 38%);
-    border: 2px solid hsl(140, 77%, 28%);
+
+.modal-header{
+    position: relative;
+}
+.modal-header .close{
+    position: absolute;
+    top: -8px;
+    right: -25px;
     color: white;
-    font-size: 18px;
-    padding: 8px 38px;
-    border-radius: 40px;
-    margin-top: 30px;
     transition: 0.5s ease-in-out;
 }
-.account_cont .row2 .column2 .order_btn:hover{
-    background-color: white;
+.modal-header .close:hover{
     color: hsl(140, 77%, 38%);
+}
+
+.modal .form{
+    width: 100%;
+    position: relative;
+    height: 70px;
+    overflow: hidden;
+    color: black;
+    margin-bottom: 15px;
+}
+.modal .form input{
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+    color: #595f6e;
+    padding-top: 30px;
+    padding-left: 10px;
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0);
+}
+.modal .form label{
+    font-size: 18px;
+    position: absolute;
+    bottom: 0px;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    border-bottom: 1px solid black;
+}
+.modal .form label::after {
+    content: "";
+    position: absolute;
+    left: 0px;
+    bottom: -1px;
+    width: 100%;
+    height: 100%;
+    border-bottom: 4px solid hsl(140, 77%, 38%);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.modal .content-name{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.modal .form input:focus + .label-name .content-name,
+.modal .form input:valid + .label-name .content-name {
+    transform: translateY(-120%);
+    font-size: 19px;
+    color: hsl(140, 77%, 38%);
+
+}
+
+.modal .form .address.error{
+    border: 2px solid hsl(0, 100%, 40%);
+}
+.modal .form label.error{
+    color: hsl(0, 100%, 40%);
+    border-bottom: 1px solid hsl(0, 100%, 40%);
+}
+.modal .form label.error::after{
+    border-bottom: 4px solid hsl(0, 100%, 40%);
+}
+.modal .form input.error:focus + .label-name .content-name,
+.modal .form input.error:valid + .label-name .content-name {
+    color: hsl(0, 100%, 40%);
+}
+
+.modal .form input:focus + .label-name::after, 
+.modal .form input:valid + .label-name::after{
+    transform: translateX(0%);
+}
+
+.modal .submit{
+    width: fit-content;
+    margin: auto;
+    margin-top: 20px;
+    padding: 5px 35px;
+    background-color: hsl(140, 77%, 38%);
+    color: white;
+    border-radius: 50px; 
+    font-size: 18px;
+    transition: 0.5s ease-in-out;
+    border: 0px;
+    cursor: pointer;
+}
+.modal .submit:hover{
+    background-color: hsl(140, 87%, 48%);
+    box-shadow: 0 5px 10px rgba(78, 78, 78, 0.4);
+}
+
+.modal textarea{
+    width: 100%;
+    height: 100px;
+    padding: 5px 10px;
+    font-size: 16px;
+    background-color: hsla(0, 0%, 100%, 0.69);
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid hsl(140, 77%, 38%);
+    transition: 0.5s ease-in-out;
+}
+.modal textarea.error{
+    border: 1px solid hsl(0, 100%, 40%);
 }

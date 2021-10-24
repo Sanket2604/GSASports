@@ -19,18 +19,7 @@
     background-color: hsl(140, 77%, 38%);
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
-    animation: heading 20s ease-in-out infinite;
-}
-@keyframes heading {
-    0%{
-        transform: translateX(-50px);
-    }
-    50%{
-        transform: translateX(0%);
-    }
-    100%{
-        transform: translateX(-50px);
-    }
+    animation: heading 10s ease-in-out infinite;
 }
 .cart > .heading{
     padding: 15px 0;
@@ -53,8 +42,10 @@
 }
 .cart .cart_item .img_cont .detail{
     font-size: 16px;
-    color: gray;
     text-align: center;
+}
+.cart .cart_item .img_cont .detail div{
+    font-size: 14px;
 }
 .cart .cart_item .price,
 .cart .cart_item .total{

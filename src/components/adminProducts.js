@@ -73,6 +73,7 @@ function ItemCard({products}){
         )
     }
 }
+
 export default function AdminProducts(props) {
 
     const [products, setProducts] = useState()
@@ -92,7 +93,7 @@ export default function AdminProducts(props) {
             setProducts(response.data)
         })
         .catch(error => {
-            console.log("Failed To Update Cart List")
+            console.log("Failed To Get Products")
         })
     },[])
 
@@ -137,7 +138,7 @@ export default function AdminProducts(props) {
                     <div className="prod_list">
                         <div className="container-fluid">
                             <div className="row">
-                                    <ItemCard products={products} />
+                                <ItemCard products={products} />
                             </div>
                         </div>
                     </div>

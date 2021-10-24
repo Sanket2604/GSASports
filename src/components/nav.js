@@ -17,7 +17,7 @@ function Loginopt({show}){
             <Link to="/account">
                 <div className="opt opt2">
                     <div className="dropdown">
-                        <Link to="/home"><div className="option" onClick={logout}>Logout</div></Link>
+                        <div className="option" onClick={logout}>Logout</div>
                     </div>
                 </div>
             </Link>

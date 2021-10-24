@@ -16,7 +16,8 @@ class Counter extends Component{
         super(props);
         this.state = {
             prodId: this.props.cartItem.products._id,
-            quantity: this.props.cartItem.quantity 
+            quantity: this.props.cartItem.quantity,
+            size: this.props.cartItem.size 
         }
         this.quantityUpdt=this.quantityUpdt.bind(this)
         this.handleInputChange=this.handleInputChange.bind(this)
@@ -45,11 +46,13 @@ class Counter extends Component{
     qtyAxiosCall(){
         console.log(this.state.prodId)
         console.log(this.state.quantity)
+        console.log(this.state.size)
         let token = localStorage.getItem("token")
         axios
-        .post(url+'/cart/quantity',{
+        .post(url+'/cart',{
             "prodId": this.state.prodId,
-            "quantity": this.state.quantity
+            "quantity": this.state.quantity,
+            "size": this.state.size
         },{
             headers: { Authorization: `Bearer ${token}` }
         })
@@ -73,16 +76,27 @@ class Counter extends Component{
         )
     }
 }
+function Size(props){
+    if(props.size!=="NA"){
+        return <div>Size: {props.size}</div>
+    }
+    else{
+        return <div></div>
+    }
+    
+}
+
 function CartItem({cartItems}){
 
-    function deleteProd(prodID){
+    function deleteProd(prodID, size){
         console.log(prodID)
         const token = localStorage.getItem('token')
         axios
         .delete(url+'/cart',{
             headers: { Authorization: `Bearer ${token}` },
             data: {
-                "prodId": prodID
+                "prodId": prodID,
+                "size": size
             }
         },
         )
@@ -98,7 +112,7 @@ function CartItem({cartItems}){
         <div className="row cart_item mt-3 mb-3" id={cartItem._id}>
             <div className="col-4 col-md-4 col-lg-4 img_cont">
                 <img src={shoe} alt=""/>
-                <div className="detail">{cartItem.products.name}</div>
+                <div className="detail">{cartItem.products.name}<Size size={cartItem.size} /></div>
             </div>
             <div className="col-2 col-md-2 col-lg-2 price">₹ {cartItem.products.price}</div>
             <div className="col-3 col-md-2 col-lg-2 quantity">
@@ -109,7 +123,7 @@ function CartItem({cartItems}){
                 <div className="tp"><span>CGST:</span> {cartItem.products.CGST}</div>
             </div>
             <div className="col-3 col-md-2 col-lg-2 total">₹ {cartItem.total}</div>
-            <div className="remove_item" onClick={()=>deleteProd(cartItem.products._id)}>-</div>
+            <div className="remove_item" onClick={()=>deleteProd(cartItem.products._id, cartItem.size)}>-</div>
         </div>
     )
 }
@@ -138,7 +152,7 @@ export default function Cart() {
         if(cart.cartItems.length===0){
             return(
                 <div className="empty_cart">
-                    <img src={emptyCart} alt="" />
+                    <img src={emptyCart} alt="Empty Cart" />
                     <p>Your Cart is Empty.</p>
                     <Link to="/shop">
                         <div className="btn_cont">

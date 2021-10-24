@@ -1,6 +1,10 @@
 .order_list{
     padding: 100px 5vw 80px !important;
 }
+.order_list.empty{
+    overflow: hidden;
+    padding: 100px 0 0 0 !important;
+}
 .order_list >.heading{
     font-size: 24px;
     position: relative;
@@ -21,7 +25,7 @@
     background-color: hsl(140, 77%, 38%);
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
-    animation: heading 20s ease-in-out infinite;
+    animation: heading 10s ease-in-out infinite;
 }
 .order_list .order_item{
     border: 2px solid hsl(140, 77%, 28%);
@@ -43,4 +47,51 @@
 }
 .order_list .order_item .field{
     margin-bottom: 10px;
+}
+.order_list.empty .row{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 600;
+    color: white;
+    background-image: url(../assets/cart/empty_warehouse.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 80vh;
+    position: relative;
+}
+.order_list.empty .btn_cont{
+    color: white;
+    width: fit-content;
+    font-size: 16px;
+    border-radius: 100px;
+    padding: 10px 40px;
+    margin: 30px auto;
+    cursor: pointer;
+    font-family: 'Oswald', sans-serif;
+    background-color: hsl(140, 77%, 38%);
+    transition: 0.5s ease-in-out;
+}
+.order_list.empty .btn_cont:hover{
+    background-color: hsl(140, 77%, 45%);
+}
+.order_list.empty .btn_cont .shop_btn img{
+    margin-left: 5px;
+    height: 17px;
+    animation: arrow 2s linear infinite normal forwards;
+}
+@keyframes arrow {
+    0%{
+        transform: translateX(0px);
+    }
+    50%{
+        transform: translateX(10px);
+    }
+    100%{
+        transform: translateX(0px);
+    }
 }

@@ -62,7 +62,7 @@
 }
 .footer{
     position: relative;
-    background-color: hsl(120, 61%, 34%);
+    background-color: hsl(140, 77%, 38%);
     padding: 50px 5vw;
     padding-bottom: 30px;
     color: rgb(231, 231, 231);
@@ -71,9 +71,6 @@
 .footer a:hover{
     color: white;
     cursor: pointer;
-}
-.footer:hover{
-    background-color: hsl(120, 61%, 37%);
 }
 .footer .section1{
     display: flex;

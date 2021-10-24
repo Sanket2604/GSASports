@@ -8,14 +8,26 @@ import cart from '../assets/nav/shopping.svg'
 import shoe from '../assets/show.jpg'
 import arrow_up from '../assets/nav/arrowup.png'
 import arrow_down from '../assets/nav/arrowdown.png'
-import { Link } from 'react-router-dom'
 import Tilt from 'react-vanilla-tilt'
 import Loader from './loader'
 
-function Size({mainprod}){
-    if(mainprod.sizeAva){
-        return mainprod.size.map( size =>
-            <div className="s">{size}</div>
+function Size({mainprod, setSize}){
+
+    function selectSize(siz){
+        mainprod.size.map(item=>{
+            if(item===siz){
+                document.getElementById(item).classList.add('active')
+                setSize(siz)        
+            }
+            else{
+                document.getElementById(item).classList.remove('active')
+            }
+        })
+    }
+
+    if(mainprod.sizeAva==="true"){
+        return mainprod.size.map( siz =>
+            <div className="s" id={siz} onClick={()=>selectSize(siz)}>{siz}</div>
         )
     }
     else{
@@ -23,12 +35,12 @@ function Size({mainprod}){
     }
 }
 
-function SizeCont({mainprod}){
-    if(mainprod.sizeAva){
+function SizeCont({mainprod, setSize}){
+    if(mainprod.sizeAva==="true"){
         return(
             <div className="size">
                 <div className="heading">Size:</div>
-                <Size mainprod={mainprod}/>
+                <Size mainprod={mainprod} setSize={setSize} />
             </div>
         )
     }
@@ -42,6 +54,7 @@ export default function Product_detail() {
     const prod = useParams();
     const [mainprod, setMainProd] = useState(false)
     const [quantity, setQuantity] = useState(1)
+    const [size, setSize] = useState("NA")
 
     useEffect(() => {
         document.title = `GSA Sports | ${prod.cat} | ${prod.pname}`
@@ -63,7 +76,8 @@ export default function Product_detail() {
         axios
         .post(url+'/cart',{
             "prodId": mainprod._id,
-            "quantity": quantity
+            "quantity": quantity,
+            "size": size
         },{
             headers: { Authorization: `Bearer ${token}` }
         })
@@ -85,7 +99,7 @@ export default function Product_detail() {
         
         setQuantity(qty)
         if(quantity<1){
-            setQuantity(qty)
+            setQuantity(1)
         }
     }
 
@@ -102,7 +116,7 @@ export default function Product_detail() {
                     <div className="col-12 col-md-6 col-lg-7">
                         <div className="content">
                             <div className="desc">{mainprod.description}</div>
-                            <SizeCont mainprod={mainprod} />
+                            <SizeCont mainprod={mainprod} setSize={setSize} />
                             <div className="quantity">
                                 <div className="counter">
                                     <input type="number" name="quantity" value={quantity} onChange={handleInputChange}/>

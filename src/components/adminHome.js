@@ -27,10 +27,25 @@ function CheckStock({products}){
         )
     }
 }
+
+function ActiveMsgs(props){
+    if(props.msgCount>0){
+        return(
+            <div style={{fontSize:"14px"}}>Unread Message: {props.msgCount}</div>
+        )
+    }
+    else{
+        return(
+            <div style={{fontSize:"14px"}}>No New Messages</div>
+        )
+    }
+}
+
 export default function AdminHome(props) {
 
     const [products, setProducts] = useState()
     const [order, setOrders] = useState()
+    const [msgCount, setMsgCount] = useState()
     const [redirect, setRedirect] = useState(true) 
     useEffect(()=>{
         document.title = "GSA Sports Admin"
@@ -55,6 +70,16 @@ export default function AdminHome(props) {
         })
         .catch(error => {
             console.log("Failed To Update Cart List")
+        })
+        axios
+        .get(url+'/message',{
+            headers: { Authorization: `Bearer ${token}`}
+        })
+        .then((res)=>{
+            setMsgCount(res.data.filter(msg=> msg.read===false).length)
+        })
+        .catch((err)=>{
+            console.log(err)
         })
     },[])
 
@@ -110,6 +135,7 @@ export default function AdminHome(props) {
                                 <Link to="/adminMessage" className="box  msg">
                                     <div className="counter"><i class="fa fa-envelope"></i></div>
                                     <div className="text">Messages</div>
+                                    <ActiveMsgs msgCount={msgCount} />
                                 </Link>
                             </div>
                         </div>

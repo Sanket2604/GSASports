@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import { url } from './url'
 import '../css/order_list.css'
+import cartimg from '../assets/cart/cart.svg'
 import { Link, Redirect } from 'react-router-dom'
 import Loader from './loader'
 
@@ -59,18 +60,35 @@ export default function Orderlist() {
         .catch((err)=>{
             console.log(err)
         })
-    });
+    },[]);
 
     if(response){
         if(orders){
-            return (
-                <div className="order_list container-fluid">
-                    <div className="heading">Your Orders</div>
-                    <div className="row">
-                        <OrderItem orders={orders}/>
+            if(orders.length!==0){
+                return (
+                    <div className="order_list container-fluid">
+                        <div className="heading">Your Orders</div>
+                        <div className="row">
+                            <OrderItem orders={orders}/>
+                        </div>
                     </div>
-                </div>
-            )
+                )
+            }
+            else{
+                return(
+                    <div className="order_list empty">
+                        <div className="heading">Your Orders</div>
+                        <div className="row">
+                            <p>You Have Not Placed Any Order.</p>
+                            <Link to="/shop">
+                                <div className="btn_cont">
+                                    <div className="shop_btn">Start Shopping Now <img src={cartimg} alt="" height="30px" /></div>
+                                </div>
+                            </Link>
+                        </div>
+                    </div>
+                )
+            }
         }
         else{
             return <Redirect to="/login" />

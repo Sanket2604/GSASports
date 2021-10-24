@@ -77,7 +77,7 @@
     bottom: -1px;
     width: 100%;
     height: 100%;
-    border-bottom: 4px solid hsl(209, 100%, 50%);
+    border-bottom: 4px solid hsl(140, 77%, 38%);
     transform: translateX(-100%);
     transition: transform 0.3s ease;
 }
@@ -94,7 +94,7 @@
 .login_cont .login .form input:valid + .label-name .content-name {
     transform: translateY(-120%);
     font-size: 19px;
-    color: hsl(209, 100%, 38%);
+    color: hsl(140, 77%, 38%);
 
 }
 

@@ -26,6 +26,11 @@
 .search_bar i:hover{
     background-color: hsl(140, 77%, 48%);
 }
+.adminOrd .total{
+    font-size: 20px;
+    position: absolute;
+    top: 30px;
+}
 .adminOrd .orders > .heading{
     font-size: 24px;
     position: relative;
@@ -47,7 +52,6 @@
     background-color: hsl(140, 77%, 38%);
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
-    animation: heading 20s ease-in-out infinite;
 }
 .adminOrd .order_item{
     border: 2px solid hsl(140, 77%, 28%);
@@ -69,4 +73,13 @@
 }
 .adminOrd .order_item .field{
     margin-bottom: 10px;
+}
+.admin_no_active_order{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    font-size: 20px;
+    border-radius: 5px;
+    border: 2px dashed hsl(140, 77%, 38%);
 }

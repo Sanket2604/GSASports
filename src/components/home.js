@@ -2,6 +2,7 @@ import React, {useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import TopPicks from './TopPicks'
 import '../css/homepage.css'
+import vid from '../assets/homepage/vid.mp4'
 import swim from '../assets/homepage/swim_icon.svg'
 import cric from '../assets/homepage/cricket_icon.png'
 import bskt from '../assets/homepage/basketball_icon.svg'
@@ -21,7 +22,10 @@ export default function Home() {
     return (
         <div className="homepage">
             <div className="video_sec">
-                Video Section
+                <video control autoPlay muted loop>
+                    <source src={vid} type="video/mp4"/>
+                </video>
+                <div className="overlay"><div>Welcome To GSA Sports</div></div>
             </div>
             <div className="top_pick_cont">
                 <TopPicks/>
@@ -126,9 +130,7 @@ export default function Home() {
                 </div>
                 <div className="row row4">
                     <div className="viewmore_cont">
-                        <Link to="/shop">
-                            <div className="viewmore_btn">View More <i class="fa fa-angle-right"></i></div>
-                        </Link>
+                        <Link to="/shop" className="viewmore_btn">View More <i class="fa fa-angle-right"></i></Link>
                     </div>
                 </div>
             </div>

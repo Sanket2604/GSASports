@@ -30,6 +30,9 @@ import { Switch, Route, Redirect } from 'react-router'
 
 export default function Main() {
     const [admin, setAdmin] = useState("false");
+    const [shippingName, setShippingName] = useState("");
+    const [shippingAddress, setShippingAddress] = useState("");
+    const [phone, setPhone] = useState("");
     
     return (
         <div>
@@ -53,12 +56,12 @@ export default function Main() {
                 <Route path="/product/:cat/:pname" component={product} />
                 <Route path="/product_detail/:cat/:pname/:pid" component={() => <ProdDetail />} />
                 <Route path="/cart" component={() => <Cart />} />
-                <Route path="/checkout" component={() => <Checkout  />} />
+                <Route path="/checkout" component={() => <Checkout setShippingAddress={setShippingAddress} setShippingName={setShippingName} setPhone={setPhone} />} />
                 <Route path="/login" component={() => <Login />} />
                 <Route path="/signup" component={() => <Signup />} />
                 <Route path="/account" component={() => <Account />} />
                 <Route path="/your_orders" component={() => <OrderList />}/>
-                <Route path="/order_confirmation" component={() => <OrderConfirmation />}/>
+                <Route path="/order_confirmation" component={() => <OrderConfirmation shippingName={shippingName} phone={phone} shippingAddress={shippingAddress} />}/>
                 <Route path="/order_detail/:ordID" component={() => <OrderDetail />} />
                 <Redirect to="/home" />
             </Switch>

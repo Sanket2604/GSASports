@@ -5,14 +5,13 @@ import {url} from "./url"
 import '../css/login.css'
 
 
-export default function Login(props) {
+export default function Login() {
 
     useEffect(() => {
         document.title = "GSA Sports | Login"
         window.scrollTo(0, 0)
     }, []);
 
-    let history = useHistory()
     const [username, setUsername] = useState()
     const [password, setPassword] = useState()
 
@@ -38,7 +37,8 @@ export default function Login(props) {
         })
         .then((response) =>{
             localStorage.setItem('token', response.data.token)
-            window.location.reload();
+            alert("Login Successfull")
+            window.location.reload()
         })
         .catch((error) => {
             console.log("Error ", error)
