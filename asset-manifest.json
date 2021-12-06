@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/GSASports/static/css/main.f87d2d13.chunk.css",
-    "main.js": "/GSASports/static/js/main.1a2eb58b.chunk.js",
-    "main.js.map": "/GSASports/static/js/main.1a2eb58b.chunk.js.map",
+    "main.js": "/GSASports/static/js/main.b470edc2.chunk.js",
+    "main.js.map": "/GSASports/static/js/main.b470edc2.chunk.js.map",
     "runtime-main.js": "/GSASports/static/js/runtime-main.7f600ad5.js",
     "runtime-main.js.map": "/GSASports/static/js/runtime-main.7f600ad5.js.map",
     "static/css/2.aa899c1d.chunk.css": "/GSASports/static/css/2.aa899c1d.chunk.css",
@@ -59,6 +59,6 @@
     "static/css/2.aa899c1d.chunk.css",
     "static/js/2.55c3a6a6.chunk.js",
     "static/css/main.f87d2d13.chunk.css",
-    "static/js/main.1a2eb58b.chunk.js"
+    "static/js/main.b470edc2.chunk.js"
   ]
 }
