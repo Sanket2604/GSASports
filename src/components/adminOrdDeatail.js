@@ -19,15 +19,19 @@ function Size(props){
 function CartItem({orderItems}){
     return orderItems.map(item=>
         <div className="row cart_item mt-3 mb-3" id={item._id}>
-            <div className="col-4 col-md-5 col-lg-6 img_cont">
-                <img src={url+item.image} alt=""/>
+            <div className="col-4 col-md-4 col-lg-4 img_cont">
+                <img src={url+item.products.image} alt=""/>
                 <div className="detail">{item.products.name}<Size size={item.size} /></div>
             </div>
             <div className="col-2 col-md-2 col-lg-2 price">₹ {item.products.price}</div>
-            <div className="col-3 col-md-3 col-lg-2 quantity">
+            <div className="col-2 col-md-2 col-lg-2 quantity">
                 <div className="counter">
-                    <input type="number" style={{border: "1px solid limegreen", borderRadius: "5px"}} value={item.quantity} disabled/>
+                    <div style={{border: "1px solid limegreen", borderRadius: "5px"}}>{item.quantity}</div>
                 </div>
+            </div>
+            <div className="col-2 col-md-2 col-lg-2 tax">
+                <div className="tp"><span>SGST:</span> {item.products.SGST}</div>
+                <div className="tp"><span>CGST:</span> {item.products.CGST}</div>
             </div>
             <div className="col-3 col-md-2 col-lg-2 total">₹ {item.total}</div>
         </div>
