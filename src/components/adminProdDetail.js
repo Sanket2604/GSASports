@@ -102,6 +102,7 @@ class FormContainer extends Component {
             update: this.props.update,
             id: this.props.product._id,
             name: this.props.product.name,
+            image: this.props.product.image,
             sportCat: this.props.product.sportCat,
             prodCat: this.props.product.prodCat,
             shortDescription: this.props.product.shortDescription,
@@ -111,6 +112,7 @@ class FormContainer extends Component {
             SGST: this.props.product.SGST,
             price: this.props.product.price,
             sizeAva: this.props.product.sizeAva,
+            selectedFile: null,
             size: this.props.product.size,
             size1: "",
             size2: "",
@@ -126,9 +128,12 @@ class FormContainer extends Component {
         this.handleInputChange = this.handleInputChange.bind(this);
         this.UpdateSize = this.UpdateSize.bind(this);
         this.SubmitForm = this.SubmitForm.bind(this);
+        this.handleFile = this.handleFile.bind(this);
+        this.fileUpload = this.fileUpload.bind(this);
     }
 
     componentDidMount(){
+        document.querySelector('.file_btn2').style.display="none"
         if(this.props.product.sizeAva){
             this.setState({
                 size1: this.props.product.size[0],
@@ -249,18 +254,52 @@ class FormContainer extends Component {
         }
     }
 
+    handleFile(event){
+        this.setState({
+            selectedFile: event.target.files[0]
+        })
+        console.log(event.target.files[0])
+        document.querySelector('.file_btn1').style.display="none"
+        document.querySelector('.file_btn2').style.display="block"
+    }
+
+    fileUpload(){
+        const token=localStorage.getItem('token')
+        const fd = new FormData()
+        fd.append('image', this.state.selectedFile, this.state.selectedFile.name)
+        console.log(fd)
+
+        axios
+        .post(url+'/products/imageUpload',{
+            prodID: this.state.id,
+            image: fd
+        },{
+            headers: {Authorization: `Bearer ${token}`}
+        })
+        .then(()=>{
+            alert("Image Updated")
+            window.location.reload()
+        })
+        .catch((err)=>{
+            alert("Could Not Add Product!"+err)
+        })
+    }
+
     render() {
         return (
             <Form id={this.state.id}>
-                <FormGroup row>
-                    <Label htmlFor="name" lg={3}>Product ID</Label>
-                    <Col lg={3} >
-                        <div style={{padding: "5px 15px", border: "1px solid hsl(140, 77%, 48%)", borderRadius: "5px", overflow: "hidden", backgroundColor:"white"}}>{this.state.id}</div>
-                    </Col>
-                    <Col lg={5} >
-                        <div>Product ID for reference. (Can not be changed)</div>
-                    </Col>
-                </FormGroup>
+                {
+                    this.state.update && 
+                    <FormGroup row>
+                        <Label htmlFor="name" lg={3}>Product ID</Label>
+                        <Col lg={3} >
+                            <div style={{padding: "5px 15px", border: "1px solid hsl(140, 77%, 48%)", borderRadius: "5px", overflow: "hidden", backgroundColor:"white"}}>{this.state.id}</div>
+                        </Col>
+                        <Col lg={5} >
+                            <div>Product ID for reference. (Can not be changed)</div>
+                        </Col>
+                    </FormGroup>
+                }   
                 <FormGroup row>
                     <Label htmlFor="name" lg={3}>Product Name</Label>
                     <Col lg={3} >
@@ -275,7 +314,6 @@ class FormContainer extends Component {
                     <Label htmlFor="sportCat" lg={3}>Sports Category</Label>
                     <Col  lg={3} >
                         <Input type="text"  id="sportCat" name="sportCat" autoComplete="off"  value={this.state.sportCat} placeholder="Sport Category" />
-                        {/* <FormFeedback>{errors.sportCat}</FormFeedback> */}
                     </Col>
                     <Col lg={4}>
                         <select name="sportCat" onChange={this.handleInputChange}>
@@ -288,7 +326,6 @@ class FormContainer extends Component {
                     <Label htmlFor="prodCat" lg={3}>Product Category</Label>
                     <Col  lg={3} >
                         <Input type="text"  id="prodCat" name="prodCat" autoComplete="off"  value={this.state.prodCat} placeholder="Product Category" />
-                        {/* <FormFeedback>{errors.prodCat}</FormFeedback> */}
                     </Col>
                     <Col lg={4}>
                         <select name="prodCat" onChange={this.handleInputChange}>
@@ -301,7 +338,6 @@ class FormContainer extends Component {
                     <Label htmlFor="stock" lg={3}>Stock</Label>
                     <Col  lg={3} >
                         <Input type="number"  id="stock" name="stock" autoComplete="off" onChange={this.handleInputChange} value={this.state.stock} placeholder="Available Stock" />
-                        {/* <FormFeedback>{errors.stock}</FormFeedback> */}
                     </Col>
                     <Col lg={5}>
                         <Stock stock={this.state.stock}/>
@@ -311,7 +347,6 @@ class FormContainer extends Component {
                     <Label htmlFor="CGST" lg={3}>CGST</Label>
                     <Col  lg={3} >
                         <Input type="number"  id="CGST" name="CGST" autoComplete="off" onChange={this.handleInputChange} value={this.state.CGST} placeholder="CGST" />
-                        {/* <FormFeedback>{errors.CGST}</FormFeedback> */}
                     </Col>
                     <Col lg={5}>
                         <div>Enter Central Goods and Services Tax on the Product.</div>
@@ -321,7 +356,6 @@ class FormContainer extends Component {
                     <Label htmlFor="SGST" lg={3}>SGST</Label>
                     <Col  lg={3} >
                         <Input type="number"  id="SGST" name="SGST" placeholder="SGST" onChange={this.handleInputChange} value={this.state.SGST} autoComplete="off" />
-                        {/* <FormFeedback>{errors.SGST}</FormFeedback> */}
                     </Col>
                     <Col lg={5}>
                         <div>Enter the State Goods and Services Tax on Product.</div>
@@ -331,7 +365,6 @@ class FormContainer extends Component {
                     <Label htmlFor="price" lg={3}>Price</Label>
                     <Col  lg={3} >
                         <Input type="number"  id="price" name="price" autoComplete="off" onChange={this.handleInputChange} value={this.state.price} placeholder="Price"/>
-                        {/* <FormFeedback>{errors.price}</FormFeedback> */}
                     </Col>
                     <Col lg={5}>
                         <div>Enter the Price of The Product</div>
@@ -355,7 +388,6 @@ class FormContainer extends Component {
                     <Label htmlFor="shortDescription" lg={3}>Short Description</Label>
                     <Col lg={5} >
                         <Input type="text" id="shortDescription" name="shortDescription" autoComplete="off" onChange={this.handleInputChange} value={this.state.shortDescription} placeholder="Short Description" />
-                        {/* <FormFeedback>{errors.shortDescription}</FormFeedback> */}
                     </Col>
                     <Col lg={4}>
                         <div>Enter A Short Description</div>
@@ -365,16 +397,24 @@ class FormContainer extends Component {
                     <Label htmlFor="description" lg={3}>Full Description</Label>
                     <Col lg={9} >
                         <Input type="textarea" rows="15" id="description" name="description" autoComplete="off" onChange={this.handleInputChange} value={this.state.description}  placeholder="Full Description" />
-                        {/* <FormFeedback>{errors.description}</FormFeedback> */}
                     </Col>
                 </FormGroup>
-                <FormGroup row>
-                    <Label htmlFor="pincode" lg={3}>Image</Label>
-                    <Col  lg={9} >
-                        <Input type="number"  id="pincode" name="pincode" autoComplete="off" placeholder="Size"/>
-                        {/* <FormFeedback>{errors.pincode}</FormFeedback> */}
-                    </Col>
-                </FormGroup>
+                {
+                    this.state.update && 
+                    <FormGroup row>
+                        <Label htmlFor="pincode" lg={3}>Image</Label>
+                        <Col  lg={5} >
+                            <img className="preview_img" src={url+this.state.image} alt="" />
+                        </Col>
+                        <Col  lg={4} style={{display: "flex", flexDirection:"column", justifyContent: "center", alignItems: "center"}}>
+                            <h5>Upload Image from the Computer</h5>
+                            <input type="file" style={{display: "none"}} onChange={this.handleFile} ref={fileInput => this.fileInput = fileInput} accept="image/png, image/gif, image/jpeg" />
+                            <div className="file_btn file_btn1" onClick={() => this.fileInput.click()}>Upload Image</div>
+                            <div className="file_btn file_btn2" onClick={this.fileUpload}>Submit Image</div>
+                            
+                        </Col>
+                    </FormGroup>
+                }
                 <FormGroup row>
                     <Col lg={12}>
                         <div className="admin_btn_cont">

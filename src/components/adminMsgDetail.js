@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import { url } from './url'
 import Loader from './loader'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, Redirect } from 'react-router-dom'
 import AdminNav from './adminNav'
 import '../css/adminMsgDetail.css'
 
@@ -33,11 +33,12 @@ export default function AdminMsgDetail(props) {
             headers: { Authorization: `Bearer ${token}` }
         })
         .then((res)=>{
-            setMessage(res.data)
             setAdmin(true)
+            setMessage(res.data)
         })
         .catch((err)=>{
             setAdmin(false)
+            setMessage(true)
         })
     },[])
     const [nav, setNav] = useState("hide");
@@ -57,7 +58,7 @@ export default function AdminMsgDetail(props) {
             headers: { Authorization: `Bearer ${token}` }
         })
         .then((res)=>{
-            alert("Dish Deleted")
+            alert("Message Deleted")
             window.location.href = "/adminMessage";
         })
         .catch((err)=>{
@@ -66,34 +67,40 @@ export default function AdminMsgDetail(props) {
     }
 
     if(message){
-        return (
-            <div className="admin_msg_detail">
-                <Link to="/adminHomepage" className="admin_homebtn">
-                    <i class="fa fa-home"></i>
-                </Link>
-                <div className="admin_toggle" onClick={navToggle}>
-                    <i class="fa fa-bars"></i>
-                </div>
-                <div className="admin_delete_dish" onClick={deletemsg}>
-                    <i class="fa fa-trash"></i>
-                    <span>Delete Message</span>
-                </div>
-                <AdminNav nav={nav} />
-                <div className="msg_detail">
-                    <div className="heading">Message Details</div>
-                    <div className="opt name"><span>Name:</span> {message.name}</div>
-                    <div className="opt email"><span>Email:</span>{message.email}</div>
-                    <div className="opt phn"><span>Phone Number:</span>+{message.phone}</div>
-                    <div className="opt date"><span>Date:</span><DateFormat timestamp={message.createdAt}/></div>
-                    <div className="opt msg">
-                        <span>Message:</span>
-                        <div>
-                            {message.message}
-                        </div>    
+        if(admin){
+            return (
+                <div className="admin_msg_detail">
+                    <Link to="/adminHomepage" className="admin_homebtn">
+                        <i class="fa fa-home"></i>
+                    </Link>
+                    <div className="admin_toggle" onClick={navToggle}>
+                        <i class="fa fa-bars"></i>
+                    </div>
+                    <div className="admin_delete_dish" onClick={deletemsg}>
+                        <i class="fa fa-trash"></i>
+                        <span>Delete Message</span>
+                    </div>
+                    <AdminNav nav={nav} />
+                    <div className="msg_detail">
+                        <div className="heading">Message Details</div>
+                        <div className="opt name"><span>Name:</span> {message.name}</div>
+                        <div className="opt email"><span>Email:</span>{message.email}</div>
+                        <div className="opt phn"><span>Phone Number:</span>+{message.phone}</div>
+                        <div className="opt date"><span>Date:</span><DateFormat timestamp={message.createdAt}/></div>
+                        <div className="opt msg">
+                            <span>Message:</span>
+                            <div>
+                                {message.message}
+                            </div>    
+                        </div>
                     </div>
                 </div>
-            </div>
-        )
+            )
+        }
+        else{
+            return <Redirect to="/adminadminMessage"/>
+
+        }
     }
     else{
         return <Loader/>

@@ -38,9 +38,6 @@ export default function OrderConfirmation(props) {
     const [redirect, setRedirect] = useState(true)
 
     useEffect(() => {
-        console.log(props.shippingName)
-        console.log(props.shippingAddress)
-        console.log(props.phone)
         document.title = "GSA Sports | Payment"
         window.scrollTo(0, 0)
         const token = localStorage.getItem('token');
@@ -58,16 +55,23 @@ export default function OrderConfirmation(props) {
     },[])
 
     function placeOrder(){
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem('token')
+        const shippingName = localStorage.getItem('shippingName')
+        const shippingAddress = localStorage.getItem('shippingAddress')
+        const phone = localStorage.getItem('phone')
         axios
         .post(url+'/order',{
-            "shippingName": props.shippingName,
-            "shippingAddress": props.shippingAddress,
-            "phone": props.phone
+            "shippingName": shippingName,
+            "shippingAddress": shippingAddress,
+            "phone": phone
         },{
             headers: { Authorization: `Bearer ${token}` }
         })
         .then(() =>{
+            window.localStorage.removeItem('shippingId');
+            window.localStorage.removeItem('shippingName');
+            window.localStorage.removeItem('shippingAddress');
+            window.localStorage.removeItem('phone');
             alert("Order Placed!!!")
         })
         .catch(error => {

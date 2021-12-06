@@ -11,15 +11,19 @@ import { Form, FormGroup, Label, Input, Col, FormFeedback } from "reactstrap";
 function Address(props){
 
     const [address, setAddress] = useState()
-
-    useEffect(() => {
+    
+    useEffect(() => {        
         const token = localStorage.getItem('token');
+        const shippingId = localStorage.getItem('shippingId');
         axios
         .get(url+'/user/shipping',{
             headers: { Authorization: `Bearer ${token}` }
         })
         .then((response) =>{
             setAddress(response.data)
+            if(shippingId){
+                document.getElementById(shippingId).classList.add('selected')
+            }
         })
         .catch(error => {
             console.log(error)
@@ -30,9 +34,10 @@ function Address(props){
         items.map(item=>{
             if(item._id===id){
                 document.getElementById(item._id).classList.add('selected')
-                props.setShippingAddress(item.address+", "+item.landmark+", "+item.city+"-"+item.pincode+", "+item.state)
-                props.setShippingName(item.name)
-                props.setPhone("+"+item.country+" - "+item.phone)
+                localStorage.setItem('shippingId', item._id)
+                localStorage.setItem('shippingAddress', item.address+", "+item.landmark+", "+item.city+"-"+item.pincode+", "+item.state)
+                localStorage.setItem('shippingName', item.name)
+                localStorage.setItem('phone', "+"+item.country+" - "+item.phone)
             }
             else{
                 document.getElementById(item._id).classList.remove('selected')
@@ -42,11 +47,18 @@ function Address(props){
 
     function deleAddress(id){
         const token = localStorage.getItem('token')
+        const shippingId = localStorage.getItem('shippingId');
+        if(shippingId === id){
+            localStorage.removeItem('shippingId')
+            localStorage.removeItem('shippingName')
+            localStorage.removeItem('shippingAddress')
+            localStorage.removeItem('phone')
+        }
         axios
         .delete(url+'/user/shipping/'+id,{
             headers: { Authorization: `Bearer ${token}` }
         })
-        .then((res)=>{
+        .then(()=>{
             alert("Shipping Address Deleted")
             window.location.reload()
         })
@@ -59,7 +71,7 @@ function Address(props){
         if(address.length!==0){
             return address.map(item=>
                 <div className="col-12 col-md-6">
-                    <div className="box box_add"id={item._id}>
+                    <div className="box box_add" id={item._id}>
                         <div>
                             <h5>{item.name}</h5>
                             <b>Phone:</b> +{item.country} - {item.phone}
@@ -148,6 +160,7 @@ class Checkout extends Component{
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleBlur = this.handleBlur.bind(this);
         this.updateForm = this.updateForm.bind(this);
+        this.payment = this.payment.bind(this);
     }
 
     componentDidMount(){
@@ -163,7 +176,10 @@ class Checkout extends Component{
             })
         })
         .catch(error => {
-            console.log("Failed To Update Cart List")
+            this.setState({
+                cart: true,
+                redirect: true
+            })
         })
     }
 
@@ -305,6 +321,18 @@ class Checkout extends Component{
         event.preventDefault();
     }
 
+    payment(){
+        const shippingName = localStorage.getItem('shippingName')
+        const shippingAddress = localStorage.getItem('shippingAddress')
+        const phone = localStorage.getItem('phone')
+        if(shippingName && shippingAddress && phone){
+            window.location.href="/order_confirmation"
+        }
+        else{
+            document.querySelector('.warning').classList.add('active')
+        }
+    }
+
     render() {
         const errors = this.validate(this.state.name, this.state.country, this.state.phone, this.state.address, this.state.landmark, this.state.city, this.state.state, this.state.pincode)
         if(this.state.cart){
@@ -405,11 +433,10 @@ class Checkout extends Component{
                                         <div className="col-1">Total:</div>
                                         <div className="col-3">₹ {this.state.cart.grandTotal}</div>
                                     </div>
-                                    <Link to="/order_confirmation">
-                                        <div className="row pay_cont">
-                                            <div className="pay_btn">Proceed To Pay</div>
-                                        </div>
-                                    </Link>
+                                    <div className="row pay_cont" onClick={this.payment}>
+                                        <div className="pay_btn">Proceed To Pay</div>
+                                    </div>
+                                    <div className="warning">Select A Shipping Address</div>
                                 </div>
                             </div>
                         </div>

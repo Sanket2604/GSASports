@@ -154,3 +154,20 @@
         transform: translateX(8px);
     }
 }
+.prod_det .content .cart_cont span{
+    font-weight: 500;
+    margin-left: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.5s ease-in-out;
+}
+.prod_det .content .cart_cont span.show{
+    color: hsl(140, 100%, 34%);
+    opacity: 1;
+    transform: translateY(0px);
+}
+.prod_det .content .cart_cont span.error{
+    color: red;
+    opacity: 1;
+    transform: translateY(0px);
+}

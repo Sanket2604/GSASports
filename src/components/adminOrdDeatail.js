@@ -4,7 +4,6 @@ import { url } from './url';
 import Loader from './loader';
 import { Link, Redirect, useParams } from 'react-router-dom';
 import AdminNav from './adminNav';
-import shoe from '../assets/show.jpg'
 import { Form, FormGroup, Label, Input, Col } from "reactstrap";
 import '../css/adminOrdDetails.css'
 
@@ -21,7 +20,7 @@ function CartItem({orderItems}){
     return orderItems.map(item=>
         <div className="row cart_item mt-3 mb-3" id={item._id}>
             <div className="col-4 col-md-5 col-lg-6 img_cont">
-                <img src={shoe} alt=""/>
+                <img src={url+item.image} alt=""/>
                 <div className="detail">{item.products.name}<Size size={item.size} /></div>
             </div>
             <div className="col-2 col-md-2 col-lg-2 price">₹ {item.products.price}</div>

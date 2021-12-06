@@ -67,7 +67,7 @@ export default function AdminProdOfStock(props) {
 
     if(products){
         if(redirect){
-            return <Redirect to="/adminLogin"/>
+            return <Redirect to="/adminHomepage"/>
         }
         else{
             return (

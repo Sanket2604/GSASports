@@ -4,7 +4,6 @@ import { url } from './url';
 import { Link, Redirect } from 'react-router-dom';
 import AdminNav from './adminNav';
 import '../css/adminProducts.css'
-import shoe from '../assets/show.jpg'
 import Loader from './loader';
 
 function Filter(props){
@@ -55,7 +54,7 @@ function ItemCard({products}){
                 <div className="admin_itemCard_cont">
                     <div className="item_card">
                         <div className="img_sec">
-                            <img className="image" src={shoe} alt="" />
+                            <img className="image" src={url+prod.image} alt="" />
                         </div>
                         <div className="title">{prod.name}</div>
                         <div className="desc">Description: {prod.shortDescription}</div>
@@ -111,7 +110,7 @@ export default function AdminProducts(props) {
 
     if(products){
         if(redirect){
-            return <Redirect to="/adminLogin"/>
+            return <Redirect to="/adminHomepage"/>
         }
         else{
             return (

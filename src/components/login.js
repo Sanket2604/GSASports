@@ -38,7 +38,7 @@ export default function Login() {
         .then((response) =>{
             localStorage.setItem('token', response.data.token)
             alert("Login Successfull")
-            window.location.reload()
+            window.location.href = "/shop";
         })
         .catch((error) => {
             console.log("Error ", error)

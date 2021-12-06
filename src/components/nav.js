@@ -55,7 +55,7 @@ export default function Nav(props) {
                 setShow(true)
         })
         .catch((err)=>{
-            console.log(err)
+            
         })
     })
     function toggleSideBar(){

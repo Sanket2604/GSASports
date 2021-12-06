@@ -5,7 +5,6 @@ import { useParams } from 'react-router'
 import '../css/product_detail.css'
 import products from '../db/productList'
 import cart from '../assets/nav/shopping.svg'
-import shoe from '../assets/show.jpg'
 import arrow_up from '../assets/nav/arrowup.png'
 import arrow_down from '../assets/nav/arrowdown.png'
 import Tilt from 'react-vanilla-tilt'
@@ -55,6 +54,7 @@ export default function Product_detail() {
     const [mainprod, setMainProd] = useState(false)
     const [quantity, setQuantity] = useState(1)
     const [size, setSize] = useState("NA")
+    const [cart_msg, setCart_msg] = useState("")
 
     useEffect(() => {
         document.title = `GSA Sports | ${prod.cat} | ${prod.pname}`
@@ -82,10 +82,18 @@ export default function Product_detail() {
             headers: { Authorization: `Bearer ${token}` }
         })
         .then(()=>{
-            
+            setCart_msg("Added To Cart")
+            document.querySelector('.cart_msg').classList.add('show')
+            setTimeout(()=>{ 
+                document.querySelector('.cart_msg').classList.remove('show') 
+            }, 1500);
         })
         .catch((err)=>{
-            console.log(err)
+            setCart_msg("Please Login")
+            document.querySelector('.cart_msg').classList.add('error')
+            setTimeout(()=>{ 
+                window.location.href = "/login"
+            }, 3000);
         })
     }
 
@@ -110,7 +118,7 @@ export default function Product_detail() {
                 <div className="row">
                     <div className="col-12 col-md-6 col-lg-5">
                         <Tilt  className="img_cont">
-                            <img className="prod_pic" src={shoe} alt="Reload" />
+                            <img className="prod_pic" src={url+mainprod.image} alt="Reload" />
                         </Tilt>
                     </div>
                     <div className="col-12 col-md-6 col-lg-7">
@@ -128,6 +136,7 @@ export default function Product_detail() {
                             </div>
                             <div className="cart_cont">
                                 <div className="cart_btn" onClick={addToCart}>Add To Cart <img src={cart} alt="Error" /></div>
+                                <span className="cart_msg">{cart_msg}</span>
                             </div>
                         </div>
                     </div>

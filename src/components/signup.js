@@ -148,23 +148,26 @@ export default class Signup extends Component {
 
     signup(){   
         const email_pattern = /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i
+        console.log(this.state)
         if(this.state.firstname!=="" && this.state.firstname.length>=3 && this.state.lastname!=="" && this.state.username!=="" && this.state.username.length>=4 && this.state.email!=="" && email_pattern.test(this.state.email) && this.state.pass!=="" && this.state.re_pass!=="" && this.state.pass===this.state.re_pass && this.state.address!=="" && this.state.landmark!=="" && this.state.city!=="" &&  this.state.pincode!=="" &&  this.state.state!=="" && this.state.phone!=="" && this.state.phone.length===10 && this.state.country!==""){
             axios
             .post(url+'/user/signup',{
                 "firstname": this.state.firstname,
                 "lastname": this.state.lastname,
+                "country": this.state.country,
                 "phone": this.state.phone,
                 "email": this.state.email,
-                "username": this.state.username,
-                "password": this.state.pass,
                 "address": this.state.address,
                 "landmark": this.state.landmark,
                 "city": this.state.city,
                 "pincode": this.state.pincode,
-                "state": this.state.state
+                "state": this.state.state,
+                "username": this.state.username,
+                "password": this.state.pass
             })
             .then((response) =>{
                 alert(response.data.status)
+                window.location.href = "/login";
             })
             .catch((error) => {
                 console.log("Error ", error)

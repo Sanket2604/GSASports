@@ -5,7 +5,7 @@ import arrow_down from '../assets/nav/arrowdown.png'
 import emptyCart from '../assets/cart/empty_cart.png'
 import cartimg from '../assets/cart/cart.svg'
 import Loader from './loader'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import '../css/cart.css'
 import axios from 'axios'
 import { url } from './url'
@@ -89,7 +89,6 @@ function Size(props){
 function CartItem({cartItems}){
 
     function deleteProd(prodID, size){
-        console.log(prodID)
         const token = localStorage.getItem('token')
         axios
         .delete(url+'/cart',{
@@ -110,8 +109,9 @@ function CartItem({cartItems}){
 
     return cartItems.map(cartItem =>
         <div className="row cart_item mt-3 mb-3" id={cartItem._id}>
+            {console.log(cartItem)}
             <div className="col-4 col-md-4 col-lg-4 img_cont">
-                <img src={shoe} alt=""/>
+                <img src={url+cartItem.products.image} alt="Reload"/>
                 <div className="detail">{cartItem.products.name}<Size size={cartItem.size} /></div>
             </div>
             <div className="col-2 col-md-2 col-lg-2 price">₹ {cartItem.products.price}</div>
@@ -131,7 +131,7 @@ function CartItem({cartItems}){
 export default function Cart() {
 
     const [cart, setCart] = useState()
-
+    const [user, setUser] = useState()
     useEffect(() => {
         document.title = "GSA Sports | Cart"
         window.scrollTo(0, 0)
@@ -141,50 +141,57 @@ export default function Cart() {
             headers: { Authorization: `Bearer ${token}` }
         })
         .then((res)=>{
+            setUser(true)
             setCart(res.data)
         })
         .catch((err)=>{
-            console.log(err)
+            setUser(false)
+            setCart(true)
         })
     }, []);
 
     if(cart){
-        if(cart.cartItems.length===0){
-            return(
-                <div className="empty_cart">
-                    <img src={emptyCart} alt="Empty Cart" />
-                    <p>Your Cart is Empty.</p>
-                    <Link to="/shop">
-                        <div className="btn_cont">
-                            <div className="shop_btn">Continue Shopping <img src={cartimg} alt="" height="30px" /></div>
+        if(user){
+            if(cart.cartItems.length===0){
+                return(
+                    <div className="empty_cart">
+                        <img src={emptyCart} alt="Empty Cart" />
+                        <p>Your Cart is Empty.</p>
+                        <Link to="/shop">
+                            <div className="btn_cont">
+                                <div className="shop_btn">Continue Shopping <img src={cartimg} alt="" height="30px" /></div>
+                            </div>
+                        </Link>
+                    </div>
+                )
+            }
+            else{
+                return (
+                    <div className="cart container mb-5">
+                        <div className="head">Your Cart</div>
+                        <div className="row heading">
+                            <div className="col-3 col-md-4 col-lg-4">Product</div>
+                            <div className="col-2 col-md-2 col-lg-2">Price</div>
+                            <div className="col-2 col-md-2 col-lg-2">Quantity</div>
+                            <div className="col-2 col-md-2 col-lg-2">Tax</div>
+                            <div className="col-2 col-md-2 col-lg-2">Total</div>
                         </div>
-                    </Link>
-                </div>
-            )
+                        <CartItem cartItems={cart.cartItems}/>
+                        <div className="row">
+                            <div className="total_cont">
+                                <div>Total</div>
+                                <div className="total">₹ {cart.grandTotal}</div>
+                            </div>
+                            <div className="checkout_cont">
+                                <Link to="/checkout"><div className="checkout_btn">Checkout</div></Link>
+                            </div>
+                        </div>
+                    </div>
+                )
+            }
         }
         else{
-            return (
-                <div className="cart container mb-5">
-                    <div className="head">Your Cart</div>
-                    <div className="row heading">
-                        <div className="col-3 col-md-4 col-lg-4">Product</div>
-                        <div className="col-2 col-md-2 col-lg-2">Price</div>
-                        <div className="col-2 col-md-2 col-lg-2">Quantity</div>
-                        <div className="col-2 col-md-2 col-lg-2">Tax</div>
-                        <div className="col-2 col-md-2 col-lg-2">Total</div>
-                    </div>
-                    <CartItem cartItems={cart.cartItems}/>
-                    <div className="row">
-                        <div className="total_cont">
-                            <div>Total</div>
-                            <div className="total">₹ {cart.grandTotal}</div>
-                        </div>
-                        <div className="checkout_cont">
-                            <Link to="/checkout"><div className="checkout_btn">Checkout</div></Link>
-                        </div>
-                    </div>
-                </div>
-            )
+            return <Redirect to="/login" />
         }
     }
     else{

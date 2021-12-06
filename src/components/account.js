@@ -154,7 +154,7 @@ class EditUser extends Component{
     render(){
         return(
             <Modal isOpen={this.props.modal} toggle={this.props.toggleModal}>
-                <ModalHeader>Add New Shipping Address <i class="fa fa-times close fa-lg" onClick={this.props.toggleModal}></i></ModalHeader>
+                <ModalHeader>Add New Shipping Address <i className="fa fa-times close fa-lg" onClick={this.props.toggleModal}></i></ModalHeader>
                 <ModalBody>
                     <div className="form">
                         <input style={{color:'black'}} className="username" type="text" name="username" autoComplete="off" onChange={this.handleInputChange} value={this.state.username} required />
@@ -209,7 +209,7 @@ class EditUser extends Component{
                         </label>                           
                     </div>
                     <div className="form">
-                        <input style={{color:'black'}} className="pincode" type="text" name="pincode" autoComplete="off" onChange={this.handleInputChange} value={this.state.pincode} required />
+                        <input style={{color:'black'}} className="pincode" type="number" name="pincode" autoComplete="off" onChange={this.handleInputChange} value={this.state.pincode} required />
                         <label htmlFor="pincode" className="label-name L_pincode">
                             <span className="content-name">Pincode</span>
                         </label>                           
@@ -233,7 +233,7 @@ class AddShip extends Component{
         super(props);
         this.state={
             shipId: this.props.shipAdd.shipId,
-            firstname: this.props.shipAdd.firstname,
+            firstname: this.props.shipAdd.name,
             country: this.props.shipAdd.country,
             phone: this.props.shipAdd.phone,
             address: this.props.shipAdd.address,
@@ -366,7 +366,7 @@ class AddShip extends Component{
     render(){
         return(
             <Modal isOpen={this.props.modal} toggle={this.props.toggleModal}>
-                <ModalHeader>Add New Shipping Address <i class="fa fa-times close fa-lg" onClick={this.props.toggleModal}></i></ModalHeader>
+                <ModalHeader>Add New Shipping Address <i className="fa fa-times close fa-lg" onClick={this.props.toggleModal}></i></ModalHeader>
                 <ModalBody>
                     <div className="form">
                         <input style={{color:'black'}} className="firstname" type="text" name="firstname" autoComplete="off" onChange={this.handleInputChange} value={this.state.firstname} required />
@@ -403,7 +403,7 @@ class AddShip extends Component{
                         </label>                           
                     </div>
                     <div className="form">
-                        <input style={{color:'black'}} className="pincode" type="text" name="pincode" autoComplete="off" onChange={this.handleInputChange} value={this.state.pincode} required />
+                        <input style={{color:'black'}} className="pincode" type="number" name="pincode" autoComplete="off" onChange={this.handleInputChange} value={this.state.pincode} required />
                         <label htmlFor="pincode" className="label-name L_pincode">
                             <span className="content-name">Pincode</span>
                         </label>                           
@@ -414,7 +414,7 @@ class AddShip extends Component{
                             <span className="content-name">State</span>
                         </label>                           
                     </div>
-                    <div className="submit" onClick={this.updateUserDetails}>Submit</div>
+                    <div className="submit" onClick={this.addShippingDetails}>Submit</div>
                 </ModalBody>
             </Modal>
         )
@@ -451,8 +451,8 @@ function Shipping(props){
                     <span>Address:</span>
                     <div>{shipAdd.address}, {shipAdd.landmark}, {shipAdd.city} - {shipAdd.pincode}, {shipAdd.state}</div>
                 </div>
-                <i class="fa fa-trash" onClick={()=>deleteShippingAdd(shipAdd._id)}></i>
-                <i class="fa fa-edit" onClick={()=>editShippingAdd(shipAdd)}></i>
+                <i className="fa fa-trash" onClick={()=>deleteShippingAdd(shipAdd._id)}></i>
+                <i className="fa fa-edit" onClick={()=>editShippingAdd(shipAdd)}></i>
             </div>
         )
     }
@@ -488,7 +488,6 @@ export default function Account() {
     function toggleModalAddShip(){ setAddShip(!addShip) }
 
     useEffect(() => {
-        document.title = "GSA Sports | Your Account"
         window.scrollTo(0, 0)
         const token = localStorage.getItem('token')
         axios
@@ -498,14 +497,13 @@ export default function Account() {
         .then((res)=>{
             if(res.status===200)
                 setShow(true)
-                
+            document.title = `GSA Sports | ${res.data.username}'s Account`
             setUser(res.data)
             setResponse(true)
         })
         .catch((err)=>{
             setResponse(true)
             setShow(false)
-            console.log(err)
         })
     }, []);
 
@@ -525,7 +523,7 @@ export default function Account() {
                     </div>
                     <div className="row row2">
                         <div className="col-12 col-md-6 column column1">
-                            <div className="heading">Your Details: <i class="fa fa-edit" onClick={toggleModalEditUser}><span>Edit Your Details</span></i></div>
+                            <div className="heading">Your Details: <i className="fa fa-edit" onClick={toggleModalEditUser}><span>Edit Your Details</span></i></div>
                             <div className="sec name"><span>Name:</span>{user.firstname} {user.lastname}</div>
                             <div className="sec phn"><span>Phone Number:</span> + {user.country} - {user.phone}</div>
                             <div className="sec email"><span>Email Id:</span> {user.email}</div>
@@ -540,7 +538,7 @@ export default function Account() {
                                 <span>Your Shipping Addresses:<br/></span> 
                                 <Shipping shipping={user.shipping} updateShipAdd={updateShipAdd} />
                                 <div className="add_ship" onClick={toggleModalAddShip}>
-                                    <i class="fa fa-plus-square"></i>
+                                    <i className="fa fa-plus-square"></i>
                                     Add A Shipping Address
                                 </div>
                             </div>
