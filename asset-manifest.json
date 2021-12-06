@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/GSASports/static/css/main.f87d2d13.chunk.css",
-    "main.js": "/GSASports/static/js/main.41b61258.chunk.js",
-    "main.js.map": "/GSASports/static/js/main.41b61258.chunk.js.map",
+    "main.js": "/GSASports/static/js/main.1a2eb58b.chunk.js",
+    "main.js.map": "/GSASports/static/js/main.1a2eb58b.chunk.js.map",
     "runtime-main.js": "/GSASports/static/js/runtime-main.7f600ad5.js",
     "runtime-main.js.map": "/GSASports/static/js/runtime-main.7f600ad5.js.map",
     "static/css/2.aa899c1d.chunk.css": "/GSASports/static/css/2.aa899c1d.chunk.css",
-    "static/js/2.586d82b8.chunk.js": "/GSASports/static/js/2.586d82b8.chunk.js",
-    "static/js/2.586d82b8.chunk.js.map": "/GSASports/static/js/2.586d82b8.chunk.js.map",
+    "static/js/2.55c3a6a6.chunk.js": "/GSASports/static/js/2.55c3a6a6.chunk.js",
+    "static/js/2.55c3a6a6.chunk.js.map": "/GSASports/static/js/2.55c3a6a6.chunk.js.map",
     "index.html": "/GSASports/index.html",
     "static/css/2.aa899c1d.chunk.css.map": "/GSASports/static/css/2.aa899c1d.chunk.css.map",
     "static/css/main.f87d2d13.chunk.css.map": "/GSASports/static/css/main.f87d2d13.chunk.css.map",
-    "static/js/2.586d82b8.chunk.js.LICENSE.txt": "/GSASports/static/js/2.586d82b8.chunk.js.LICENSE.txt",
+    "static/js/2.55c3a6a6.chunk.js.LICENSE.txt": "/GSASports/static/js/2.55c3a6a6.chunk.js.LICENSE.txt",
     "static/media/aboutus.css": "/GSASports/static/media/shop.003b0da3.jpg",
     "static/media/adminLogin.css": "/GSASports/static/media/adminLogin.178a9e35.jpg",
     "static/media/amazonpay.a4707681.png": "/GSASports/static/media/amazonpay.a4707681.png",
@@ -57,8 +57,8 @@
   "entrypoints": [
     "static/js/runtime-main.7f600ad5.js",
     "static/css/2.aa899c1d.chunk.css",
-    "static/js/2.586d82b8.chunk.js",
+    "static/js/2.55c3a6a6.chunk.js",
     "static/css/main.f87d2d13.chunk.css",
-    "static/js/main.41b61258.chunk.js"
+    "static/js/main.1a2eb58b.chunk.js"
   ]
 }
